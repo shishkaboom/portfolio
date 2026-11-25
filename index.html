@@ -227,8 +227,9 @@ a.ft-cta{display:block;color:inherit;text-decoration:none}
 .ft-cta .l2 i{font-style:normal;display:inline-block;padding:0 .06em .02em;transition:background-color .2s,color .2s}
 a.ft-cta:hover .l2 i,a.ft-cta:focus-visible .l2 i{background:var(--or);color:#fff}
 .photo.drag{z-index:5}
-.ring{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
-.ring span{position:absolute;left:0;top:0;white-space:nowrap;padding:.45em 1em;border-radius:99px;background:var(--or);color:#fff;font-size:clamp(10px,1vw,14px);font-weight:500;letter-spacing:.08em;text-transform:uppercase;will-change:transform,opacity}
+.ring{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.ring.rb{z-index:1}.ring.rf{z-index:7}
+.ring text{font-family:var(--sans);font-weight:600;letter-spacing:.14em;text-transform:uppercase;fill:var(--or)}
 .drag{touch-action:none;user-select:none;-webkit-user-drag:none}.drag.dragging{z-index:50}
 .ft-gif{position:absolute;left:58%;top:-.5vw;width:19vw;aspect-ratio:797/652;object-fit:cover;z-index:2}
 .ft-nav{display:flex;justify-content:center;gap:12px clamp(32px,10vw,180px)!important;gap:12px 24px;flex-wrap:wrap;border-block:1px solid #e4e2de;padding:clamp(18px,2.4vw,40px) clamp(16px,2.2vw,44px);font-size:clamp(15px,2vw,34px);letter-spacing:.04em;text-transform:uppercase}
@@ -442,7 +443,7 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
   <div class="hero">
     <svg class="star" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-hero" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#0022FF"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="#0022FF"/></svg>
     <img class="photo drag" draggable="false" src="img/photo.jpg" alt="Svetlana Loginova">
-    <div class="ring" aria-label="Crypto, Fintech, Gamification"><span>Crypto</span><span>Fintech</span><span>Gamification</span><span>Crypto</span><span>Fintech</span><span>Gamification</span></div>
+    <svg class="ring rb" aria-hidden="true"></svg><svg class="ring rf" aria-label="Crypto, Fintech, Gamification"></svg>
     <div class="wrap">
       <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#about" class="hide-s">About</a><a href="#contact">Contact</a></div></nav>
       <h1>Svetlana<span class="l2row"><span class="h1role">Senior Brand &amp;<br>Visual Designer</span><em>Loginova</em></span></h1>
@@ -1153,22 +1154,33 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
 })();
 </script>
 <script>
-/* tags orbit the hero photo like Saturn's rings: tilted ellipse, back half goes behind the photo */
+/* one running line of text circles the hero photo like Saturn's ring: tilted ellipse, back half passes behind the photo */
 (function(){
-  var ring=document.querySelector('.ring'),ph=document.querySelector('.hero .photo');if(!ring||!ph)return;
-  var hero=ph.parentNode,tags=[].slice.call(ring.children),n=tags.length,a=0,still=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  function loop(){
-    var hr=hero.getBoundingClientRect(),r=ph.getBoundingClientRect(),cx=r.left-hr.left+r.width/2,cy=r.top-hr.top+r.height/2,mw=0;tags.forEach(function(t){mw=Math.max(mw,t.offsetWidth)});var rx=Math.min(r.width*.75,hr.width-cx-mw/2-10,cx-mw/2-10),ry=r.height*.18,tilt=-.22;
-    tags.forEach(function(t,i){
-      var th=a+i*2*Math.PI/n,x=Math.cos(th)*rx,y=Math.sin(th)*ry,z=Math.sin(th);
-      var X=x*Math.cos(tilt)-y*Math.sin(tilt),Y=x*Math.sin(tilt)+y*Math.cos(tilt),s=.78+.22*(z+1)/2;
-      t.style.transform='translate('+(cx+X-t.offsetWidth/2).toFixed(1)+'px,'+(cy+Y-t.offsetHeight/2).toFixed(1)+'px) scale('+s.toFixed(3)+')';
-      t.style.opacity=(.55+.45*(z+1)/2).toFixed(2);
-      t.style.zIndex=z>0?7:1;
+  var ph=document.querySelector('.hero .photo'),rb=document.querySelector('.ring.rb'),rf=document.querySelector('.ring.rf');if(!ph||!rb||!rf)return;
+  var hero=ph.parentNode,NS='http://www.w3.org/2000/svg',still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var PH='Crypto \u00b7 Fintech \u00b7 Gamification \u00b7 ',key='',tps=[],C=0,off=0,S=0;
+  function build(rx,ry,fs){
+    S=Math.ceil(rx+fs*2);var tilt=-13;
+    [rb,rf].forEach(function(svg,i){
+      svg.setAttribute('width',2*S);svg.setAttribute('height',2*S);svg.setAttribute('viewBox',(-S)+' '+(-S)+' '+(2*S)+' '+(2*S));
+      var d='M '+rx+' 0 A '+rx+' '+ry+' 0 0 0 '+(-rx)+' 0 A '+rx+' '+ry+' 0 0 0 '+rx+' 0 A '+rx+' '+ry+' 0 0 0 '+(-rx)+' 0 A '+rx+' '+ry+' 0 0 0 '+rx+' 0';
+      var id='rp'+i;
+      svg.innerHTML='<defs><path id="'+id+'" d="'+d+'"/>'+(i?'<clipPath id="rc"><rect x="'+(-S)+'" y="0" width="'+(2*S)+'" height="'+S+'"/></clipPath>':'')+'</defs><g transform="rotate('+tilt+')"'+(i?' clip-path="url(#rc)"':'')+'><text font-size="'+fs+'" dominant-baseline="middle"><textPath href="#'+id+'"></textPath></text></g>';
     });
-    if(!still)a+=.006;requestAnimationFrame(loop);
+    var p=rb.querySelector('path');C=p.getTotalLength()/2;
+    var tp0=rb.querySelector('textPath');tp0.textContent=PH;var seg=tp0.getComputedTextLength()||1;
+    var n=Math.max(1,Math.round(C/seg)),txt=new Array(n+1).join(PH);
+    tps=[rb.querySelector('textPath'),rf.querySelector('textPath')];
+    tps.forEach(function(t){t.textContent=txt;t.setAttribute('textLength',C.toFixed(1));t.setAttribute('lengthAdjust','spacing')});
   }
-  /* tags in front sit above the photo, tags behind sit below it */
+  function loop(){
+    var hr=hero.getBoundingClientRect(),r=ph.getBoundingClientRect(),cx=r.left-hr.left+r.width/2,cy=r.top-hr.top+r.height/2;
+    var rx=Math.round(r.width*.74),ry=Math.round(r.height*.2),fs=Math.max(10,Math.min(15,Math.round(r.width/22)));
+    var k=rx+'/'+ry+'/'+fs;if(k!==key){key=k;build(rx,ry,fs)}
+    var tf='translate('+(cx-S).toFixed(1)+'px,'+(cy-S).toFixed(1)+'px)';rb.style.transform=rf.style.transform=tf;
+    if(!still){off=(off+0.6)%C;tps.forEach(function(t){t.setAttribute('startOffset',off.toFixed(1))})}
+    requestAnimationFrame(loop);
+  }
   loop();
 })();
 </script>
