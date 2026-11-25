@@ -227,9 +227,15 @@ a.ft-cta{display:block;color:inherit;text-decoration:none}
 .ft-cta .l2 i{font-style:normal;display:inline-block;padding:0 .06em .02em;transition:background-color .2s,color .2s}
 a.ft-cta:hover .l2 i,a.ft-cta:focus-visible .l2 i{background:var(--or);color:#fff}
 .photo.drag{z-index:5}
-.ring{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.ring{position:absolute;left:0;top:0;width:0;height:0;perspective:1100px;pointer-events:none}
 .ring.rb{z-index:1}.ring.rf{z-index:7}
-.ring text{font-family:var(--sans);font-weight:600;letter-spacing:.14em;text-transform:uppercase;fill:var(--or)}
+.ring .tilt,.ring .spin{position:absolute;left:0;top:0;transform-style:preserve-3d}
+.ring .tilt{transform:rotateZ(-10deg) rotateX(-16deg)}
+.ring .spin{animation:ringspin 22s linear infinite}
+@keyframes ringspin{to{transform:rotateY(-360deg)}}
+.ring b{position:absolute;left:0;top:0;font-family:var(--sans);font-weight:600;color:var(--or);text-transform:uppercase;line-height:1;white-space:pre}
+.ring.rf b{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+@media (prefers-reduced-motion:reduce){.ring .spin{animation:none}}
 .drag{touch-action:none;user-select:none;-webkit-user-drag:none}.drag.dragging{z-index:50}
 .ft-gif{position:absolute;left:58%;top:-.5vw;width:19vw;aspect-ratio:797/652;object-fit:cover;z-index:2}
 .ft-nav{display:flex;justify-content:center;gap:12px clamp(32px,10vw,180px)!important;gap:12px 24px;flex-wrap:wrap;border-block:1px solid #e4e2de;padding:clamp(18px,2.4vw,40px) clamp(16px,2.2vw,44px);font-size:clamp(15px,2vw,34px);letter-spacing:.04em;text-transform:uppercase}
@@ -443,7 +449,7 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
   <div class="hero">
     <svg class="star" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-hero" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#0022FF"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="#0022FF"/></svg>
     <img class="photo drag" draggable="false" src="img/photo.jpg" alt="Svetlana Loginova">
-    <svg class="ring rb" aria-hidden="true"></svg><svg class="ring rf" aria-label="Crypto, Fintech, Gamification"></svg>
+    <div class="ring rb" aria-hidden="true"><div class="tilt"><div class="spin"></div></div></div><div class="ring rf" aria-label="Crypto, Fintech, Gamification"><div class="tilt"><div class="spin"></div></div></div>
     <div class="wrap">
       <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#about" class="hide-s">About</a><a href="#contact">Contact</a></div></nav>
       <h1>Svetlana<span class="l2row"><span class="h1role">Senior Brand &amp;<br>Visual Designer</span><em>Loginova</em></span></h1>
@@ -1154,31 +1160,23 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
 })();
 </script>
 <script>
-/* one running line of text circles the hero photo like Saturn's ring: tilted ellipse, back half passes behind the photo */
+/* 3D running text ring around the hero photo: letters stand on a spinning cylinder; the back copy sits under the photo, the front copy (backfaces hidden) above it */
 (function(){
-  var ph=document.querySelector('.hero .photo'),rb=document.querySelector('.ring.rb'),rf=document.querySelector('.ring.rf');if(!ph||!rb||!rf)return;
-  var hero=ph.parentNode,NS='http://www.w3.org/2000/svg',still=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var PH='Crypto \u00b7 Fintech \u00b7 Gamification \u00b7 ',key='',tps=[],C=0,off=0,S=0;
-  function build(rx,ry,fs){
-    S=Math.ceil(rx+fs*2);var tilt=-13;
-    [rb,rf].forEach(function(svg,i){
-      svg.setAttribute('width',2*S);svg.setAttribute('height',2*S);svg.setAttribute('viewBox',(-S)+' '+(-S)+' '+(2*S)+' '+(2*S));
-      var d='M '+rx+' 0 A '+rx+' '+ry+' 0 0 0 '+(-rx)+' 0 A '+rx+' '+ry+' 0 0 0 '+rx+' 0 A '+rx+' '+ry+' 0 0 0 '+(-rx)+' 0 A '+rx+' '+ry+' 0 0 0 '+rx+' 0';
-      var id='rp'+i;
-      svg.innerHTML='<defs><path id="'+id+'" d="'+d+'"/>'+(i?'<clipPath id="rc"><rect x="'+(-S)+'" y="0" width="'+(2*S)+'" height="'+S+'"/></clipPath>':'')+'</defs><g transform="rotate('+tilt+')"'+(i?' clip-path="url(#rc)"':'')+'><text font-size="'+fs+'" dominant-baseline="middle"><textPath href="#'+id+'"></textPath></text></g>';
-    });
-    var p=rb.querySelector('path');C=p.getTotalLength()/2;
-    var tp0=rb.querySelector('textPath');tp0.textContent=PH;var seg=tp0.getComputedTextLength()||1;
-    var n=Math.max(1,Math.round(C/seg)),txt=new Array(n+1).join(PH);
-    tps=[rb.querySelector('textPath'),rf.querySelector('textPath')];
-    tps.forEach(function(t){t.textContent=txt;t.setAttribute('textLength',C.toFixed(1));t.setAttribute('lengthAdjust','spacing')});
+  var ph=document.querySelector('.hero .photo'),rings=[].slice.call(document.querySelectorAll('.ring'));if(!ph||rings.length<2)return;
+  var hero=ph.parentNode,PH='CRYPTO \u00b7 FINTECH \u00b7 GAMIFICATION \u00b7 ',key='';
+  function build(R,fs){
+    var W={},probe=document.createElement('b');probe.style.fontSize=fs+'px';rings[0].appendChild(probe);
+    function cw(c){if(!(c in W)){probe.textContent=c===' '?'\u00a0':c;W[c]=probe.getBoundingClientRect().width+fs*.12}return W[c]}
+    var seg=0;for(var j=0;j<PH.length;j++)seg+=cw(PH[j]);probe.remove();
+    var circ=2*Math.PI*R,reps=Math.max(1,Math.round(circ/seg)),txt=new Array(reps+1).join(PH),k2=circ/(seg*reps),pos=0,h='';
+    for(var i=0;i<txt.length;i++){var c=txt[i],w=cw(c)*k2;if(c!==' ')h+='<b style="font-size:'+fs+'px;transform:rotateY('+((pos+w/2)/circ*360).toFixed(3)+'deg) translateZ('+R+'px) translate(-50%,-50%)">'+c+'</b>';pos+=w}
+    rings.forEach(function(rg){rg.querySelector('.spin').innerHTML=h});
   }
   function loop(){
     var hr=hero.getBoundingClientRect(),r=ph.getBoundingClientRect(),cx=r.left-hr.left+r.width/2,cy=r.top-hr.top+r.height/2;
-    var rx=Math.round(r.width*.74),ry=Math.round(r.height*.2),fs=Math.max(10,Math.min(15,Math.round(r.width/22)));
-    var k=rx+'/'+ry+'/'+fs;if(k!==key){key=k;build(rx,ry,fs)}
-    var tf='translate('+(cx-S).toFixed(1)+'px,'+(cy-S).toFixed(1)+'px)';rb.style.transform=rf.style.transform=tf;
-    if(!still){off=(off+0.6)%C;tps.forEach(function(t){t.setAttribute('startOffset',off.toFixed(1))})}
+    var R=Math.round(r.width*.72),fs=Math.max(11,Math.min(18,Math.round(r.width/18)));
+    var k=R+'/'+fs;if(k!==key){key=k;build(R,fs)}
+    rings.forEach(function(rg){rg.style.transform='translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px)'});
     requestAnimationFrame(loop);
   }
   loop();
