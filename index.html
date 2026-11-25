@@ -221,6 +221,9 @@ html,body,a,button,.ct{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2248%22%
 .ft-cta .l1{padding-left:0}
 .ft-cta .l2{padding-left:16vw;font-family:var(--display);text-transform:uppercase}
 .ft-cta .l3{padding-left:0}
+a.ft-cta{display:block;color:inherit;text-decoration:none}
+.ft-cta .l2 i{font-style:normal;text-decoration:underline 5px transparent;text-underline-offset:.08em;transition:text-decoration-color .2s}
+a.ft-cta:hover .l2 i,a.ft-cta:focus-visible .l2 i{text-decoration-color:var(--or)}
 .photo.drag{z-index:5}
 .drag{touch-action:none;user-select:none;-webkit-user-drag:none}.drag.dragging{z-index:50;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45))}
 .ft-gif{position:absolute;left:58%;top:-.5vw;width:19vw;aspect-ratio:797/652;object-fit:cover;z-index:2}
@@ -396,7 +399,7 @@ html,body,a,button,.ct{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2248%22%
   <footer class="ft" id="contact-footer">
     <div class="ft-mid">
       <svg class="ft-star" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-foot" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop/><stop offset="1" stop-color="#FF6C02"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="url(#sg-foot)"/></svg>
-      <p class="ft-cta"><span class="l1">Let’s</span><span class="l2">work</span><span class="l3">together</span></p>
+      <a class="ft-cta" href="https://t.me/uatatey" target="_blank" rel="noopener" aria-label="Let’s work together: message me on Telegram @uatatey"><span class="l1">Let’s</span><span class="l2"><i>work</i></span><span class="l3">together</span></a>
       <img class="ft-gif drag" draggable="false" src="img/bear.jpg" alt="Animated bear blowing a kiss">
     </div>
   </footer>
