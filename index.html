@@ -32,7 +32,9 @@ a:focus-visible{outline:2px solid var(--or);outline-offset:3px}
 .star{position:absolute;right:-14vw;top:-14vw;width:78vw;max-width:1000px;aspect-ratio:879/717;z-index:0;pointer-events:none}
 .hero .wrap{position:relative;z-index:2}
 .hero h1{margin:48px 0 0;font-weight:300;font-size:clamp(56px,11vw,160px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;text-wrap:balance}
-.hero h1 em{display:block;padding-left:min(400px,30vw);font-family:var(--display);font-style:normal;font-weight:400;text-transform:none;letter-spacing:-.01em;font-size:1.04em}
+.hero h1 .l2row{display:flex;align-items:center}
+.hero h1 .h1role{flex:0 0 min(400px,30vw);font-family:var(--sans,inherit);font-size:clamp(10px,1.25vw,18px);font-weight:500;letter-spacing:.06em;line-height:1.3;text-transform:uppercase;color:var(--or);padding-right:12px}
+.hero h1 em{display:block;font-family:var(--display);font-style:normal;font-weight:400;text-transform:none;letter-spacing:-.01em;font-size:1.04em}
 .photo{position:absolute;z-index:2;right:max(16px, 7vw);top:110px;width:clamp(150px,24vw,320px);aspect-ratio:1;object-fit:cover;transform:rotate(-4deg)}
 .role{margin-top:28px;font-size:clamp(15px,1.6vw,20px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;line-height:1.35}
 .role span{display:block;color:var(--or)}
@@ -225,6 +227,8 @@ a.ft-cta{display:block;color:inherit;text-decoration:none}
 .ft-cta .l2 i{font-style:normal;display:inline-block;padding:0 .06em .02em;transition:background-color .2s,color .2s}
 a.ft-cta:hover .l2 i,a.ft-cta:focus-visible .l2 i{background:var(--or);color:#fff}
 .photo.drag{z-index:5}
+.ring{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
+.ring span{position:absolute;left:0;top:0;white-space:nowrap;padding:.45em 1em;border-radius:99px;background:var(--or);color:#fff;font-size:clamp(10px,1vw,14px);font-weight:500;letter-spacing:.08em;text-transform:uppercase;will-change:transform,opacity}
 .drag{touch-action:none;user-select:none;-webkit-user-drag:none}.drag.dragging{z-index:50}
 .ft-gif{position:absolute;left:58%;top:-.5vw;width:19vw;aspect-ratio:797/652;object-fit:cover;z-index:2}
 .ft-nav{display:flex;justify-content:center;gap:12px clamp(32px,10vw,180px)!important;gap:12px 24px;flex-wrap:wrap;border-block:1px solid #e4e2de;padding:clamp(18px,2.4vw,40px) clamp(16px,2.2vw,44px);font-size:clamp(15px,2vw,34px);letter-spacing:.04em;text-transform:uppercase}
@@ -438,10 +442,10 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
   <div class="hero">
     <svg class="star" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-hero" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#0022FF"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="url(#sg-hero)"/></svg>
     <img class="photo drag" draggable="false" src="img/photo.jpg" alt="Svetlana Loginova">
+    <div class="ring" aria-label="Crypto, Fintech, Gamification"><span>Crypto</span><span>Fintech</span><span>Gamification</span><span>Crypto</span><span>Fintech</span><span>Gamification</span></div>
     <div class="wrap">
       <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#about" class="hide-s">About</a><a href="#contact">Contact</a></div></nav>
-      <h1>Svetlana<em>Loginova</em></h1>
-      <div class="role">Senior Brand &amp; Visual Designer<span>Crypto · Fintech · Gamification</span></div>
+      <h1>Svetlana<span class="l2row"><span class="h1role">Senior Brand &amp;<br>Visual Designer</span><em>Loginova</em></span></h1>
       <p class="lede">I build brands, campaign visuals and video for crypto and fintech products, and the template systems that let marketing teams ship them fast.<br>Based in Dubai.</p>
     </div>
   </div>
@@ -1146,6 +1150,26 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
       });
     });
   });
+})();
+</script>
+<script>
+/* tags orbit the hero photo like Saturn's rings: tilted ellipse, back half goes behind the photo */
+(function(){
+  var ring=document.querySelector('.ring'),ph=document.querySelector('.hero .photo');if(!ring||!ph)return;
+  var hero=ph.parentNode,tags=[].slice.call(ring.children),n=tags.length,a=0,still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function loop(){
+    var hr=hero.getBoundingClientRect(),r=ph.getBoundingClientRect(),cx=r.left-hr.left+r.width/2,cy=r.top-hr.top+r.height/2,mw=0;tags.forEach(function(t){mw=Math.max(mw,t.offsetWidth)});var rx=Math.min(r.width*.75,hr.width-cx-mw/2-10,cx-mw/2-10),ry=r.height*.18,tilt=-.22;
+    tags.forEach(function(t,i){
+      var th=a+i*2*Math.PI/n,x=Math.cos(th)*rx,y=Math.sin(th)*ry,z=Math.sin(th);
+      var X=x*Math.cos(tilt)-y*Math.sin(tilt),Y=x*Math.sin(tilt)+y*Math.cos(tilt),s=.78+.22*(z+1)/2;
+      t.style.transform='translate('+(cx+X-t.offsetWidth/2).toFixed(1)+'px,'+(cy+Y-t.offsetHeight/2).toFixed(1)+'px) scale('+s.toFixed(3)+')';
+      t.style.opacity=(.55+.45*(z+1)/2).toFixed(2);
+      t.style.zIndex=z>0?7:1;
+    });
+    if(!still)a+=.006;requestAnimationFrame(loop);
+  }
+  /* tags in front sit above the photo, tags behind sit below it */
+  loop();
 })();
 </script>
 <script>
