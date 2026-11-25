@@ -1,0 +1,1002 @@
+<meta charset="utf-8">
+<title>Svetlana Loginova Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Redaction+50:ital,wght@0,400;0,700;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: one dark sheet, oversized starburst bleeding off the top-right, editorial grid of cases; same identity as the CV */
+:root{
+  --bg:#0c0c0c; --bg-2:#151413; --fg:#f2efe9; --mut:#9b978f; --line:#2a2826; --or:#ff6a1a;
+  --display:'Redaction 50', 'Times New Roman', serif;
+  --sans:'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{width:100%;margin:0;padding-left:max(clamp(16px,3vw,56px), env(safe-area-inset-left, 0px));padding-right:max(clamp(16px,3vw,56px), env(safe-area-inset-right, 0px))}
+.view{display:none}
+.view.on{display:block}
+
+/* nav */
+.nav{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;padding-block:22px;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.nav a{text-decoration:none;color:var(--fg)}
+.nav .links{display:flex;gap:24px}
+.nav .links a{color:var(--fg);opacity:.85}
+.nav .links a:hover,.nav .links a:focus-visible{opacity:1;color:var(--or)}
+a:focus-visible{outline:2px solid var(--or);outline-offset:3px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-bottom:56px}
+.star{position:absolute;right:-14vw;top:-14vw;width:78vw;max-width:1000px;aspect-ratio:879/717;z-index:0;pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.hero h1{margin:48px 0 0;font-weight:300;font-size:clamp(56px,11vw,160px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;text-wrap:balance}
+.hero h1 em{display:block;font-family:var(--display);font-style:normal;font-weight:400;text-transform:none;letter-spacing:-.01em;font-size:1.04em}
+.photo{position:absolute;z-index:2;right:max(16px, 8vw);top:120px;width:clamp(120px,18vw,240px);aspect-ratio:1;object-fit:cover;transform:rotate(-4deg);box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.role{margin-top:28px;font-size:clamp(15px,1.6vw,20px);font-weight:500;letter-spacing:.06em;text-transform:uppercase;line-height:1.35}
+.role span{display:block;color:var(--or)}
+.lede{max-width:56ch;margin-top:20px;color:#d8d4cc;font-size:17px}
+
+/* stats */
+.stats{position:relative;z-index:2;background:var(--bg);display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.stats div{padding:24px 0 22px 24px;border-left:1px solid var(--line);border-top:1px solid var(--line);min-width:0}
+.stats div:nth-child(3n+1){border-left:0;padding-left:0}
+.stats b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(58px,11.44vw,166px);line-height:.9;color:var(--or);font-variant-numeric:tabular-nums;white-space:nowrap}
+.stats span{display:block;margin-top:8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+
+/* section heads */
+.sec{padding-block:72px 24px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--or);margin:0 0 28px}
+.eyebrow:after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* cases */
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.case{display:block;text-decoration:none;color:var(--fg);min-width:0}
+.case-wide{grid-column:1/-1}.case-wide .pic{aspect-ratio:1500/739!important}
+.case .pic{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--bg-2);border:1px solid var(--line)}
+.case .pic img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.case .pic-fish{background:#000}
+.case .pic-fish img{object-fit:contain;padding:6% 12%}
+.case .pic-fish{overflow:hidden}.case .pic-fish video{display:block;width:100%;height:100%;object-fit:contain;transform:scale(1.75)}
+.case:hover .pic img{transform:scale(1.03)}
+.case .tile{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:26px}
+.case .tile b{font-family:var(--display);font-weight:400;font-size:clamp(56px,7vw,96px);line-height:.9;color:var(--or)}
+.case .tile small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.case .tile.or{background:var(--or)}
+.case .tile.or b{color:var(--bg)}
+.case .tile.or small{color:#3a1a08}
+.case .meta{display:flex;justify-content:space-between;gap:16px;margin-top:16px;align-items:baseline}
+.case h3{margin:0;font-size:22px;font-weight:500;letter-spacing:-.01em}
+.case h3 i{font-style:normal;font-family:var(--display);font-weight:400;color:var(--or);font-size:1.12em}
+.case .tags{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.case p{margin:6px 0 0;color:#cfcbc3;max-width:52ch}
+.soon{position:absolute;right:14px;bottom:14px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:5px 9px;border:1px solid currentColor;color:var(--mut)}
+.tile.or + .soon{color:#3a1a08}
+
+/* other work */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.strip figure{margin:0;min-width:0}
+.strip img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line)}
+.strip figcaption{margin-top:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+
+/* about */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start}
+.about .big .px{font-family:var(--display);color:var(--or)}
+.about-photo{display:block;width:min(100%,360px);aspect-ratio:1;object-fit:cover;transform:rotate(-3deg);margin:0 0 36px auto;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.about p{margin:0 0 14px;color:#d8d4cc;font-size:18px;max-width:58ch}
+.about .big{font-family:var(--sans);font-weight:300;letter-spacing:-.01em;font-style:normal;font-size:clamp(30px,3.4vw,44px);line-height:1.1;color:var(--fg);margin-bottom:22px}
+.cv-btn{display:inline-flex;align-items:center;gap:14px;margin:24px 0 6px;padding:14px 22px;border:1.5px solid var(--or);font-size:14px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--fg);transition:background .2s,color .2s}
+.cv-btn span{color:var(--or);transition:color .2s}
+.cv-btn:hover{background:var(--or);color:var(--bg)}
+.cv-btn:hover span{color:var(--bg)}
+.clients{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.contact{}
+.contact dl{border-top:1px solid var(--line)}
+.contact dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0}
+.contact dt,.contact dd{padding:14px 0;border-bottom:1px solid var(--line);margin:0}
+.contact dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);padding-right:24px}
+.contact dd{font-size:17px;user-select:all;overflow-wrap:anywhere}
+.contact dd a{text-decoration:none;border-bottom:1px solid var(--or)}
+
+.cta{font-family:var(--display);font-style:normal;font-size:clamp(48px,8vw,112px);line-height:.95;margin:0;color:var(--fg)}
+.cta span{color:var(--or)}
+
+/* case page */
+.back{display:inline-block;margin-top:32px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--mut)}
+.back:hover{color:var(--or)}
+.chead{padding-block:28px 40px;position:relative}
+.chead h1{margin:0;font-weight:300;font-size:clamp(48px,8vw,120px);line-height:.9;letter-spacing:-.02em;text-transform:uppercase}
+.chead h1 em{font-family:var(--display);font-style:normal;font-weight:400;text-transform:none;color:var(--or)}
+.chead .sub{margin-top:18px;font-size:19px;color:#d8d4cc;max-width:60ch}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);margin-top:36px}
+.facts div{padding:16px 16px 16px 0;min-width:0}
+.facts dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.facts dd{margin:4px 0 0;font-size:15px}
+.cs{display:grid;grid-template-columns:220px 1fr;gap:40px;padding-block:44px;border-bottom:1px solid var(--line)}
+.cs h2{margin:0;font-family:var(--display);font-style:normal;font-weight:400;font-size:34px;line-height:1;color:var(--or)}
+.cs h2 small{display:block;margin-top:10px;font-family:var(--sans);font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.cs .body{min-width:0}
+.cs ul{margin:0;padding:0;list-style:none}
+.cs li{position:relative;padding-left:22px;margin-bottom:10px;color:#e2ded6;max-width:64ch}
+.cs li:before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--or)}
+.cs li b{font-weight:600;color:var(--fg)}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+.gallery img{width:100%;border:1px solid var(--line)}
+.gallery .wide{grid-column:1/-1}
+.gallery .portrait img{width:auto;max-width:100%;max-height:720px;display:block;margin:0 auto}
+.gallery figure{margin:0;min-width:0}
+.gallery figcaption{margin-top:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.cs p.txt{margin:0 0 14px;color:#e2ded6;max-width:64ch}
+.vids{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:28px}
+.vids figure{margin:0;min-width:0}
+.vids .wide{grid-column:1/-1}
+.vids .yt{position:relative;display:flex;align-items:flex-end;padding:20px;width:100%;aspect-ratio:16/9;border:1px solid var(--line);background:radial-gradient(120% 90% at 80% 10%,#3a1a08 0,var(--bg-2) 60%);text-decoration:none;color:var(--fg)}
+.vids .yt b{font-family:var(--display);font-weight:400;font-size:clamp(20px,2.4vw,32px);line-height:1.05;max-width:80%}
+.vids .yt .play{position:absolute;left:50%;top:45%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:var(--or);transition:transform .2s}
+.vids .yt .play:after{content:"";position:absolute;left:29px;top:22px;border-left:20px solid var(--bg);border-top:14px solid transparent;border-bottom:14px solid transparent}
+.vids .yt:hover .play{transform:scale(1.08)}
+.vids iframe{display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line);background:var(--bg-2)}
+.vids figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.vids figcaption a{color:var(--or);text-decoration:none;white-space:nowrap}
+.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.icons figure{margin:0;min-width:0}
+.icons img{width:100%;aspect-ratio:1;object-fit:contain;background:#f9f9f9;border:1px solid var(--line)}
+.icons figcaption{margin-top:8px;font-size:13px;color:#cfcbc3}
+.icons figcaption b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--or);font-weight:600}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-block:1px solid var(--line);margin-top:8px}
+.nums div{padding:22px 0 18px;min-width:0}
+.nums b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(40px,5vw,60px);line-height:1;color:var(--or)}
+.nums span{display:block;margin-top:6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.note{margin-top:14px;font-size:13px;color:var(--mut)}
+.next{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:48px;text-decoration:none}
+.next span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.next b{font-family:var(--display);font-style:normal;font-weight:400;font-size:clamp(34px,5vw,64px);color:var(--fg)}
+.next:hover b{color:var(--or)}
+
+@media (max-width:860px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stats div{border-left:0;padding-left:0}
+  .stats div:nth-child(2n){border-left:1px solid var(--line);padding-left:14px}
+  .cases,.about,.gallery,.vids{grid-template-columns:1fr}
+  .icons{grid-template-columns:repeat(2,1fr)}
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .cs{grid-template-columns:1fr;gap:18px}
+  .facts,.nums{grid-template-columns:repeat(2,1fr)}
+  .photo{top:84px;right:16px}
+  .nav .links{gap:14px}
+}
+@media (max-width:520px){
+  .nav .links a.hide-s{display:none}
+  .photo{width:110px;top:96px}
+  .hero h1{margin-top:150px}
+}
+
+/* collage: full-bleed, broken grid of work tiles */
+.collage{padding-top:72px}
+.cg{position:relative;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:12vw;gap:clamp(14px,2.2vw,36px);padding-inline:clamp(16px,2.2vw,36px);width:100%}
+.ct{position:relative;display:block;overflow:hidden;text-decoration:none;color:var(--fg);background:var(--bg-2);min-width:0}
+.ct img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+a.ct:hover img{transform:scale(1.04)}
+.ct.dark .lbl{right:auto;max-width:calc(100% - 32px);background:var(--bg);padding:clamp(10px,1.2vw,18px) clamp(12px,1.4vw,22px) clamp(10px,1.1vw,16px)}
+.ct.dark .arr{background:var(--bg);padding:clamp(8px,.9vw,14px);width:clamp(40px,4.2vw,68px);stroke-width:2.5}
+
+.ct .arr{position:absolute;z-index:2;left:clamp(16px,2.2vw,36px);top:clamp(16px,2.2vw,36px);width:clamp(36px,5vw,84px);height:auto;fill:none;stroke:currentColor;stroke-width:2;transition:transform .3s}
+a.ct:hover .arr{transform:translate(6px,-6px)}
+.ct .lbl{position:absolute;z-index:2;left:clamp(16px,2.2vw,36px);right:16px;bottom:clamp(16px,2vw,32px)}
+.ct .lbl b{display:block;font-weight:300;font-size:clamp(24px,3.4vw,58px);line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+.ct .lbl em{font-family:var(--display);font-style:normal;text-transform:none}
+.ct .lbl small{display:block;margin-top:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.c1{grid-column:1/6;grid-row:1/4;background:var(--or);color:var(--bg)}
+.c1 .big{position:absolute;left:clamp(16px,2.2vw,36px);top:38%;font-family:var(--display);font-size:clamp(56px,9vw,150px);line-height:.85}
+.c2{grid-column:6/13;grid-row:1/3}
+.c3{grid-column:6/10;grid-row:3/5}
+.c4{grid-column:10/13;grid-row:3/5;transform:translateY(3vw)}
+.c5{grid-column:1/6;grid-row:4/7}
+.c6{grid-column:6/9;grid-row:5/7}
+.c7{grid-column:9/13;grid-row:5/7;transform:translateY(3vw)}
+.collage{padding-bottom:3vw}
+.c3 .lbl b,.c4 .lbl b,.c6 .lbl b{font-size:clamp(22px,2.6vw,44px)}
+.burst{position:absolute;z-index:3;width:clamp(150px,19vw,300px);left:calc(41.66% - clamp(75px,9.5vw,150px));top:calc(40vw - clamp(75px,9.5vw,150px));transform:rotate(-8deg);pointer-events:none}
+.burst path{fill:var(--or)}
+.burst text{font-family:var(--sans);font-weight:600;font-size:15px;fill:var(--bg)}
+@media (max-width:860px){
+  .cg{grid-template-columns:repeat(6,1fr);grid-auto-rows:30vw}
+  .c1{grid-column:1/4;grid-row:1/3}.c2{grid-column:4/7;grid-row:1/2}.c3{grid-column:4/7;grid-row:2/3}
+  .c5{grid-column:1/7;grid-row:3/5}.c4{grid-column:1/3;grid-row:5/6}.c6{grid-column:3/5;grid-row:5/6}.c7{grid-column:5/7;grid-row:5/6}
+  .ct .lbl b{font-size:17px!important}.ct .lbl small{display:none}.c4 .lbl,.c6 .lbl,.c7 .lbl{display:none}.ct.dark .arr{width:34px;padding:7px}
+  .burst{width:120px;left:calc(50% - 60px);top:calc(62vw - 60px)}
+  .c4,.c7{transform:none}
+}
+html,body,a,button,.ct{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2248%22%20height%3D%2254%22%20viewBox%3D%220%200%20181%20203%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%20%3Cpath%20d%3D%22M121.335%20143.27C103.901%20151.775%2095.2093%20169.822%20101.921%20183.58C108.632%20197.337%20128.206%20201.595%20145.639%20193.09C163.073%20184.586%20171.765%20166.538%20165.053%20152.781C158.342%20139.023%20138.768%20134.765%20121.335%20143.27Z%22%20fill%3D%22white%22%20stroke-width%3D%2210.2785%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke%3D%22%23263238%22%2F%3E%20%3Cpath%20d%3D%22M109.188%20191.778C126.629%20188.968%20143.87%20172.36%20149.667%20164.643L99.9229%20174.144L100.118%20179.018L102.757%20185.504L109.188%20191.778Z%22%20fill%3D%22%23263238%22%2F%3E%20%3Cpath%20d%3D%22M17.4823%20114.203C18.5101%2095.7021%2043.1786%2095.7878%2055.3843%2098.1432C51.787%2085.2951%2034.8236%2066.0233%2017.4823%2051.248C-0.40558%2036.007%202.5214%2015.7618%2017.4823%207.56402C37.0906%20-3.18031%2065.6905%2024.6204%2076.9189%2038.5764C98.1183%2029.5827%20104.542%2034.722%20113.201%2039.042C160.432%2032.1523%20174.872%2089.1497%20175.515%20121.27C176.157%20153.39%20137.116%20174.254%20102.616%20175.409C52.5084%20177.086%2016.1975%20137.33%2017.4823%20114.203Z%22%20fill%3D%22white%22%2F%3E%20%3Cpath%20d%3D%22M55.3843%2098.1432C43.1786%2095.7878%2018.5101%2095.7021%2017.4823%20114.203C16.1975%20137.33%2052.5084%20177.086%20102.616%20175.409C137.116%20174.254%20176.157%20153.39%20175.515%20121.27C174.872%2089.1497%20160.432%2032.1523%20113.201%2039.042M93.6215%2062.9881C91.0518%2057.8486%2085.9126%2048.8549%2076.9189%2038.5764C65.6905%2024.6204%2037.0906%20-3.18031%2017.4823%207.56402C2.5214%2015.7618%20-0.40558%2036.007%2017.4823%2051.248C34.8236%2066.0233%2051.787%2085.2951%2055.3843%2098.1432M55.3843%2098.1432C56.995%20100.226%2058.2891%20109.241%2057.6467%20112.453M113.201%2039.042C104.542%2034.722%2098.1183%2029.5827%2076.9189%2038.5764M113.201%2039.042C122.53%2046.2853%20126.384%2053.3518%20127.669%2059.1334%22%20stroke-width%3D%2210.2785%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke%3D%22%23263238%22%2F%3E%20%3Cpath%20d%3D%22M119.318%2091.8968L123.815%20105.387M141.16%2085.4727L145.657%2098.9632%22%20stroke-width%3D%2210.2785%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke%3D%22%23263238%22%2F%3E%20%3C%2Fsvg%3E") 4 3,auto}
+/* footer: phone / email, big three-line CTA over a glowing star, gif sticker, link row */
+.ft{margin-top:40px;overflow:hidden;padding-bottom:clamp(24px,3vw,48px)}
+.ft-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:clamp(20px,3vw,48px) clamp(16px,2.2vw,44px) 0;font-size:clamp(16px,2.2vw,36px);letter-spacing:.04em;text-transform:uppercase}
+.ft-top a{text-decoration:none;color:var(--fg)}
+.ft-top a:hover{color:var(--or)}
+.ft-mid{position:relative;margin-top:clamp(20px,3vw,48px);padding:0 clamp(16px,3vw,56px)}
+.ft-star{position:absolute;left:18%;top:-4%;width:66vw;aspect-ratio:879/717}
+.ft-cta{position:relative;margin:0;line-height:.84;font-weight:400;font-size:19.2vw;text-transform:uppercase;letter-spacing:-.02em}
+.ft-cta span{display:block;position:relative}
+.ft-cta .l1{padding-left:0}
+.ft-cta .l2{padding-left:16vw;font-family:var(--display);text-transform:uppercase}
+.ft-cta .l3{padding-left:0}
+.photo.drag{z-index:5}
+.drag{touch-action:none;user-select:none;-webkit-user-drag:none}.drag.dragging{z-index:50;filter:drop-shadow(0 24px 40px rgba(0,0,0,.45))}
+.ft-gif{position:absolute;left:58%;top:-.5vw;width:19vw;aspect-ratio:797/652;object-fit:cover;z-index:2}
+.ft-nav{display:flex;justify-content:center;gap:12px clamp(32px,10vw,180px)!important;gap:12px 24px;flex-wrap:wrap;border-block:1px solid #3a3836;padding:clamp(18px,2.4vw,40px) clamp(16px,2.2vw,44px);font-size:clamp(15px,2vw,34px);letter-spacing:.04em;text-transform:uppercase}
+.ft-nav a{text-decoration:none;color:var(--fg)}
+.ft-nav a.on,.ft-nav a:hover{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:2px}
+.ft-nav a:hover{color:var(--or)}
+.trail{position:absolute;z-index:40;width:40px;height:40px;margin:-20px 0 0 -20px;pointer-events:none;animation:trail .9s ease forwards}
+@keyframes trail{0%{opacity:0;transform:scale(.6) rotate(var(--r))}12%{opacity:1;transform:scale(1) rotate(var(--r))}70%{opacity:1}100%{opacity:0;transform:scale(.9) rotate(var(--r))}}
+
+/* A-ADS Group case: deck-style panels */
+.cstar{position:absolute;right:-2vw;top:-40px;width:clamp(150px,26vw,440px);aspect-ratio:879/717;pointer-events:none;z-index:0}
+.chead>*:not(.cstar){position:relative;z-index:1}
+.panel{margin-top:16px;padding:clamp(20px,3vw,48px);border:1px solid var(--line)}
+.panel .ph{display:flex;justify-content:space-between;gap:12px;margin-bottom:clamp(16px,2vw,28px);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.p-blue{background:#0381f6;color:#fff}.p-blue .ph{color:#dbe9ff}
+.p-light{background:#eef1f4;color:#151413}.p-light .ph{color:#5d6670}
+.aa-hero{position:relative;overflow:hidden;margin-top:28px}
+.aa-name{margin:0;font-weight:300;font-size:clamp(56px,9vw,150px);line-height:.9;letter-spacing:-.02em;color:#fff;text-align:center}
+.aa-mascot{position:absolute;right:clamp(16px,6vw,110px);top:clamp(40px,4vw,70px);width:clamp(90px,12vw,200px)}
+.aa-strip{display:block;width:120%;max-width:none;margin-top:clamp(8px,1.5vw,24px)}
+.boards{display:grid;gap:16px;margin-top:28px}
+.boards figure{margin:0}
+.more{display:inline-block;margin-top:16px;color:var(--or);font-size:14px;letter-spacing:.04em;text-decoration:none;border-bottom:1px solid currentColor}
+.boards img{display:block;width:100%;height:auto}
+.boards figcaption{margin-top:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.p-white{background:#fff;color:#151413}.p-white .ph{color:#5d6670}
+.p-black{background:#050505}.p-black .ph{color:var(--mut)}
+.p-mint{background:#c2d6cf;color:#151413}.p-mint .ph{color:#47584f}
+.tg{display:flex;justify-content:center;align-items:center;gap:clamp(8px,2vw,32px);flex-wrap:wrap}
+.tg img{width:clamp(180px,22vw,310px);height:auto}
+.tg img:nth-child(2){transform:translateY(-12px)}
+.duo{display:grid;grid-template-columns:1fr 1.4fr;gap:16px;margin-top:16px}
+.duo .panel{min-width:0;margin-top:0;display:flex;flex-direction:column}
+.duo .welcome{display:block;width:min(100%,440px);margin:0 auto;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.phones{display:flex;justify-content:center;align-items:flex-start;gap:clamp(10px,2vw,28px);flex:1}
+.phones img{width:clamp(110px,12vw,190px);height:auto;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.duo .crop{padding-bottom:0}
+.crop .cbox{flex:none;height:clamp(360px,38vw,560px);overflow:hidden;display:flex;justify-content:center;align-items:flex-start;gap:clamp(10px,2vw,28px)}
+.crop .welcome{box-shadow:none}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.trio figure{margin:0;min-width:0;display:flex;align-items:center;justify-content:center;aspect-ratio:1;overflow:hidden;border:1px solid var(--line)}
+.trio img{width:100%;height:100%;object-fit:cover}
+.trio .fit{background:#fff}.trio .fit img{object-fit:contain;padding:8%}
+.objs{display:grid;grid-template-columns:repeat(8,1fr);gap:clamp(8px,1.5vw,24px);align-items:center}
+.objs img{width:100%;height:auto;max-height:220px;object-fit:contain}
+.objs img.big{grid-column:span 2;max-height:300px}
+.solo{display:block;width:min(100%,520px);margin:0 auto}
+@media (max-width:860px){
+  .duo,.trio{grid-template-columns:1fr}
+  .objs{grid-template-columns:repeat(3,1fr)}
+  .objs img.big{grid-column:span 3}
+  .phones img{width:29%}
+  .aa-mascot{display:none}
+  .crop .cbox{height:320px}
+  .cstar{width:130px;top:-10px;opacity:.9}
+}
+/* skills & experience under the stats, on the same 3-column grid and dividers as .stats; max 400px tall */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line);max-height:400px;overflow:hidden}
+.skills>*{min-width:0;margin:0;padding:clamp(28px,3vw,44px) 24px clamp(28px,3vw,44px) 24px}
+.skills>*:first-child{padding-left:0}
+.skills h2{font-weight:300;font-size:clamp(34px,4.2vw,64px);line-height:.95;letter-spacing:-.01em;text-transform:uppercase}
+.skills h2 i{font-style:normal;font-family:var(--display);color:var(--or);text-transform:none}
+.skills ul{list-style:none}
+.skills li{font-size:clamp(15px,1.25vw,19px);line-height:1.3;padding:0 0 12px;color:var(--fg)}
+.skills li:last-child{padding-bottom:0}
+.skills .tools span{display:block;margin-top:2px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+@media (max-width:860px){
+  .skills{grid-template-columns:repeat(2,1fr);max-height:none}
+  .skills h2{grid-column:1/-1;padding:24px 0 0}
+  .skills ul{padding:20px 14px 22px 0}
+  .skills ul:last-child{padding-left:14px}
+  .skills li{font-size:14px;padding-bottom:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<!-- HOME -->
+<section class="view" id="v-home">
+  <div class="hero">
+    <svg class="star" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-hero" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop/><stop offset="1" stop-color="#FF6C02"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="url(#sg-hero)"/></svg>
+    <img class="photo drag" draggable="false" src="img/photo.jpg" alt="Svetlana Loginova">
+    <div class="wrap">
+      <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#about" class="hide-s">About</a><a href="#contact">Contact</a></div></nav>
+      <h1>Svetlana<em>Loginova</em></h1>
+      <div class="role">Senior Brand &amp; Visual Designer<span>Crypto · Fintech · Gamification</span></div>
+      <p class="lede">I build brands, campaign visuals and video for crypto and fintech products, and the template systems that let marketing teams ship them fast. Based in Dubai.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div><b>10+</b><span>years in design</span></div>
+      <div><b>30M+</b><span>users reached by games</span></div>
+      <div><b>100+</b><span>brand videos, 3 languages</span></div>
+      <div><b>300+</b><span>localized campaigns</span></div>
+      <div><b>8</b><span>design guides</span></div>
+      <div><b>15</b><span>mentored junior / middle designers</span></div>
+    </div>
+    <section class="skills" aria-label="Skills and experience">
+      <h2>Skills <i>&amp;</i><br>Experience</h2>
+      <ul class="tools">
+        <li>Figma <span>design systems, libraries, collaboration</span></li>
+        <li>Adobe Creative Suite <span>Photoshop, Illustrator, After Effects</span></li>
+        <li>Blender <span>visual assets, animation</span></li>
+      </ul>
+      <ul>
+        <li>Branding &amp; visual identity</li>
+        <li>Social media &amp; marketing design</li>
+        <li>3D/2D visuals &amp; illustration</li>
+        <li>UI/UX and digital product design</li>
+      </ul>
+    </section>
+
+    <div class="sec" id="work">
+      <h2 class="eyebrow">Selected work</h2>
+      <div class="cases">
+        <a class="case" href="#onebullex">
+          <div class="pic"><div class="tile or"><small>Rebrand · Video production</small><b>100+<br>videos</b></div></div>
+          <div class="meta"><h3>OneBullEx</h3><span class="tags">2025 — now</span></div>
+          <p>Rebrand of an AI-driven futures trading platform and a video production line launched from scratch in three languages.</p>
+        </a>
+        <a class="case" href="#a-ads-group">
+          <div class="pic pic-fish"><video src="img/fish-mp4.mp4" poster="img/ma-3d1.png" autoplay muted loop playsinline aria-label="MAADS 3D goldfish swimming on black"></video></div>
+          <div class="meta"><h3>A-ADS <i>Group</i></h3><span class="tags">2024 — 2025</span></div>
+          <p>Brand, social media and conference design for a crypto advertising network and its brands SLISE and MAADS.</p>
+        </a>
+        <a class="case" href="#games">
+          <div class="pic"><img src="img/g-cover2.jpg" alt="Cowboys Galaxy character: a furious coati cowboy firing a revolver, with the Rev Games logo"></div>
+          <div class="meta"><h3>Gamification <i>at Rev Games</i></h3><span class="tags">2021 — 2024</span></div>
+          <p>Loyalty games for Sber, Rostelecom, MegaFon and Beeline, plus an indie game: 850K+ players and ×5 spend per player.</p>
+        </a>
+        <a class="case" href="#revgames">
+          <div class="pic"><img src="img/rg-cover.jpg" alt="Rev Games crocodile logo stickers with stars and lightning"></div>
+          <div class="meta"><h3>Rev Games <i>rebrand</i></h3><span class="tags">Brand identity</span></div>
+          <p>A bolder logo, a casual voice and a colour system for the gamification studio where I led design.</p>
+        </a>
+        <a class="case" href="#travel">
+          <div class="pic"><img src="img/kn-cover.jpg" alt="KN travel school logo on a purple palm-leaf pattern"></div>
+          <div class="meta"><h3>Kate Netesa <i>travel brand</i></h3><span class="tags">Personal brand</span></div>
+          <p>A monogram with a north star for a travel blogger and her travel school, with social templates and merch.</p>
+        </a>
+        <a class="case" href="#sports">
+          <div class="pic"><img src="img/sp-cover.jpg" alt="SPORT lettering with a freestyle footballer in orange and blue"></div>
+          <div class="meta"><h3>Sports <i>illustration</i></h3><span class="tags">Illustration · Posters</span></div>
+          <p>Freestyle football championship posters, T-shirts, a Telegram sticker pack and betting banners.</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="sec" id="about">
+      <h2 class="eyebrow">About</h2>
+      <div class="about">
+        <div>
+          <p class="big">Ten years of turning products <span class="px">people have never heard of</span> into <span class="px">brands they remember</span>.</p>
+          <p>I started in branding studios, spent four years leading design at a gamification studio, where our loyalty games for banks and telecom reached over 30 million people, and moved into Web3 in 2024.</p>
+          <p>Today I work in-house in Dubai on brand, campaign visuals and video. I like systems: a good template library is the reason a team can ship 300 localized campaigns without losing the brand.</p>
+          <div class="clients"><span>OneBullEx</span><span>A-ADS</span><span>Sber</span><span>Rostelecom</span><span>MegaFon</span><span>Danone</span><span>Dashly</span></div>
+        </div>
+        <div class="contact" id="contact">
+          <dl>
+            <dt>Email</dt><dd>loginooof@gmail.com</dd>
+            <dt>Phone</dt><dd>+971 58 545 5944</dd>
+            <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/svetlana-loginova-1a415b257/" target="_blank" rel="noopener">svetlana-loginova</a></dd>
+            <dt>Behance</dt><dd><a href="https://www.behance.net/shishkaboom" target="_blank" rel="noopener">shishkaboom</a></dd>
+            <dt>Based in</dt><dd>Dubai, UAE</dd>
+          </dl>
+          <a class="cv-btn" href="CV_Svetlana_Loginova.pdf" target="_blank" rel="noopener" download>Download CV <span>PDF ↓</span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer class="ft" id="contact-footer">
+    <div class="ft-mid">
+      <svg class="ft-star" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-foot" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop/><stop offset="1" stop-color="#FF6C02"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="url(#sg-foot)"/></svg>
+      <p class="ft-cta"><span class="l1">Let’s</span><span class="l2">work</span><span class="l3">together</span></p>
+      <img class="ft-gif drag" draggable="false" src="img/bear.jpg" alt="Animated bear blowing a kiss">
+    </div>
+  </footer>
+</section>
+
+<!-- CASE: A-ADS GROUP -->
+<section class="view" id="v-a-ads-group">
+  <div class="wrap">
+    <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#contact">Contact</a></div></nav>
+    <a class="back" href="#work">← All work</a>
+    <header class="chead">
+      <svg class="cstar" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-case" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop/><stop offset="1" stop-color="#FF6C02"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="url(#sg-case)"/></svg>
+      <h1>A-ADS <em>Group</em></h1>
+      <p class="sub">A crypto advertising network with three brands. I gave the main brand a voice on social media, designed its landing pages and conference presence, and launched social for SLISE from zero.</p>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Communication → Brand &amp; Visual Designer</dd></div>
+        <div><dt>Period</dt><dd>Mar 2024 — Dec 2025</dd></div>
+        <div><dt>Brands</dt><dd>A-ADS, SLISE, MAADS</dd></div>
+        <div><dt>Scope</dt><dd>Brand, SMM, web, events, motion</dd></div>
+      </dl>
+    </header>
+    <div class="nums">
+      <div><b>20+</b><span>landing pages</span></div>
+      <div><b>100+</b><span>animated banners</span></div>
+      <div><b>80+</b><span>illustrations</span></div>
+      <div><b>8</b><span>crypto conferences</span></div>
+    </div>
+
+    <div class="cs">
+      <h2>A-ADS<small>Main brand</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Challenge:</b> almost no social media presence and no clear way the brand spoke to customers.</li>
+          <li><b>Solution:</b> a new visual language for social: a brand mascot, graphics and illustrations, plus redesigned site pages built on a shared Figma library.</li>
+          <li><b>HR brand:</b> a “First Day” landing for new employees with the team, org chart and stories, in the same illustrated style.</li>
+          <li><b>Also:</b> 20+ landing pages, 80+ illustrations, 100+ animated web banners for Web3 and fintech campaigns, and branding for a crypto address verification product.</li>
+        </ul>
+        <div class="boards">
+          <figure><img src="img/aa-b1.jpg" alt="A-ADS: redesigned site pages, 80+ illustrations and 20+ landing pages" loading="lazy"><figcaption>Web design · 80+ illustrations · 20+ landing pages</figcaption></figure>
+          <figure><img src="img/aa-b2.jpg" alt="A-ADS: 300+ social media posters" loading="lazy"><figcaption>Social media · 300+ posters</figcaption></figure>
+          <figure><img src="img/aa-b3.jpg" alt="A-ADS HR brand: employee social media, anniversary posts and First Day landing" loading="lazy"><figcaption>HR brand · Employee posts · First Day landing</figcaption></figure>
+          <figure><img src="img/aa-b4.jpg" alt="A-ADS mascot Adsy in different poses" loading="lazy"><figcaption>Mascot Adsy</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Events<small>8 conferences</small></h2>
+      <div class="body">
+        <ul>
+          <li>Led visual design for 8 crypto conferences, including Dubai, Hong Kong, Batumi and Yerevan: stands, merch and promo materials.</li>
+        </ul>
+        <p class="note">Photos of the stands will go here.</p>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>SLISE<small>Social from zero</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Challenge:</b> social networks launched from scratch with no photo or video content.</li>
+          <li><b>Solution:</b> a structured visual style, templates and a type system, with AI-generated visuals filling the gap left by missing shoots.</li>
+        </ul>
+        <div class="boards">
+          <figure><img src="img/sl-b1.jpg" alt="SLISE: social media posts, key visuals and conference graphics" loading="lazy"><figcaption>Social media · Key visuals · Templates</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>MAADS<small>Agency brand</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Objective:</b> create a brand for launching a full-funnel Web3 marketing agency on the market.</li>
+          <li><b>Solution:</b> a bold identity with glossy 3D and AI-made characters, a website, Telegram and social media templates, and 20+ decks for the BD and client teams.</li>
+          <li><b>Campaigns:</b> AI key visuals for MAADS and client banners for crypto products, from “crypto coins as people” to cashback and token-safety ads.</li>
+        </ul>
+        <div class="boards">
+          <figure><img src="img/ma-b1.jpg" alt="MAADS: 3D and AI key visuals, social media posts and brand guidelines with logo, fonts, colors and illustrations" loading="lazy"><figcaption>3D &amp; AI key visuals · Social media · Brand guidelines</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <a class="next" href="#games"><span>Next case</span><b>Gamification at Rev Games →</b></a>
+  </div>
+</section>
+
+
+<!-- CASE: ONEBULLEX -->
+<section class="view" id="v-onebullex">
+  <div class="wrap">
+    <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#contact">Contact</a></div></nav>
+    <a class="back" href="#work">← All work</a>
+    <header class="chead">
+      <h1>OneBull<em>Ex</em></h1>
+      <p class="sub">An AI-native exchange for crypto futures, stocks, ETFs and commodities. I co-led the rebrand and started the brand’s video production from zero: there was none before I joined.</p>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Brand Designer</dd></div>
+        <div><dt>Period</dt><dd>Dec 2025 — now</dd></div>
+        <div><dt>Location</dt><dd>Dubai, on-site</dd></div>
+        <div><dt>Scope</dt><dd>Rebrand, video, campaigns, templates</dd></div>
+      </dl>
+    </header>
+    <div class="nums">
+      <div><b>100+</b><span>videos in 3 languages</span></div>
+      <div><b>30 min</b><span>per asset, was 4 hours</span></div>
+      <div><b>30+</b><span>localized templates</span></div>
+      <div><b>300+</b><span>campaigns in 5 locales</span></div>
+    </div>
+
+    <div class="cs">
+      <h2>Video<small>From zero to 100+</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Challenge:</b> a new brand with no video at all, entering markets that speak Chinese, English and Portuguese.</li>
+          <li><b>Solution:</b> I set up the video direction and produced 100+ ads, brand and educational videos for YouTube, Instagram and WeChat, including WeChat videos with AI avatars.</li>
+        </ul>
+        <div class="vids">
+          <figure class="wide"><a class="yt" href="https://youtu.be/yanXqfG_Pqg" target="_blank" rel="noopener" data-yt="yanXqfG_Pqg" aria-label="Play: Trade smarter with AI. Meet OneBullEx"><span class="play"></span><b>Trade smarter with AI. Meet OneBullEx</b></a><figcaption><span>Video</span><a href="https://youtu.be/yanXqfG_Pqg" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
+          <figure><a class="yt" href="https://youtu.be/S1gtL5nMnmo" target="_blank" rel="noopener" data-yt="S1gtL5nMnmo" aria-label="Play: OneBullEx TradFi"><span class="play"></span><b>OneBullEx TradFi</b></a><figcaption><span>Video</span><a href="https://youtu.be/S1gtL5nMnmo" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
+          <figure><a class="yt" href="https://youtu.be/HZbxCVuogqs" target="_blank" rel="noopener" data-yt="HZbxCVuogqs" aria-label="Play: SPARTANS strategy &amp; TradFi markets"><span class="play"></span><b>SPARTANS strategy &amp; TradFi markets</b></a><figcaption><span>Video</span><a href="https://youtu.be/HZbxCVuogqs" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
+          <figure class="wide"><a class="yt" href="https://youtu.be/aEm2hF7XJnU" target="_blank" rel="noopener" data-yt="aEm2hF7XJnU" aria-label="Play: OneBullEx Mastercard tutorial"><span class="play"></span><b>OneBullEx Mastercard tutorial</b></a><figcaption><span>Video</span><a href="https://youtu.be/aEm2hF7XJnU" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Rebrand<small>Brand book</small></h2>
+      <div class="body">
+        <ul>
+          <li>Co-created the new brand book and visual system, now live across the product, site and social media.</li>
+          <li>Campaign key visuals, static social posts, BD decks, long-reads and landing pages on the new system.</li>
+        </ul>
+        <p class="note">Brand visuals will go here.</p>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Templates<small>Design ops</small></h2>
+      <div class="body">
+        <ul>
+          <li>Built an auto-layout component system in Figma that cut production of a typical asset from 4 hours to 30 minutes.</li>
+          <li>Led design support for the Operational team: 30+ templates for mobile banners, menu icons, the sign-up page and pop-ups in Chinese (simplified and traditional), English, Portuguese and Korean. They have powered 300+ campaigns.</li>
+        </ul>
+      </div>
+    </div>
+
+    <a class="next" href="#a-ads-group"><span>Next case</span><b>A-ADS Group →</b></a>
+  </div>
+</section>
+
+<!-- CASE: GAMIFICATION (REV GAMES) -->
+<section class="view" id="v-games">
+  <div class="wrap">
+    <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#contact">Contact</a></div></nav>
+    <a class="back" href="#work">← All work</a>
+    <header class="chead">
+      <svg class="cstar" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-games" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop/><stop offset="1" stop-color="#FF6C02"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="url(#sg-games)"/></svg>
+      <h1>Gamification <em>at Rev Games</em></h1>
+      <p class="sub">Games that bring people back to big brands’ apps: loyalty games for Sber, Rostelecom, MegaFon and Beeline, plus an indie space Western. As Design Lead I took each one from pitch and concept to art, UX/UI and launch.</p>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Design Lead</dd></div>
+        <div><dt>Period</dt><dd>Feb 2021 — Apr 2024</dd></div>
+        <div><dt>Clients</dt><dd>Sber, Rostelecom, MegaFon, Beeline</dd></div>
+        <div><dt>Scope</dt><dd>Art direction, UX/UI, 2D/3D, illustration</dd></div>
+      </dl>
+    </header>
+    <div class="nums">
+      <div><b>350K</b><span>players for Sber in 6 months</span></div>
+      <div><b>500K</b><span>players for Rostelecom in 3 months</span></div>
+      <div><b>×5</b><span>MegaFon spend per player, 30 → 150 RUB</span></div>
+      <div><b>21M</b><span>Sber bonus points redeemed</span></div>
+    </div>
+
+    <div class="cs">
+      <h2>Sber<small>Slovechki · word game</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Goal:</b> Sber has 108.5M active clients. The bank wanted more daily users in the app, more card transactions and more people spending their bonus points.</li>
+          <li><b>What:</b> a daily word game in the loyalty program, inspired by Wordle: guess a word in six tries and win bonus points, 2,500 for a first-try guess. Only registered users play, so every game opens the bank app.</li>
+          <li><b>Research &amp; UX:</b> market research, an interactive prototype and a user flow that showed funnel bottlenecks. Usability tests turned onboarding into in-game learning.</li>
+          <li><b>Design:</b> Bukvik, a bright green dictionary mascot who leads onboarding and became the face of the game in ads and social media. A playful school-like style, icons and stickers, adapted for phone, tablet and desktop and exported at 2x for Unity.</li>
+          <li><b>System:</b> competitions, achievements and a personal dictionary so words never repeat. Design concept in two weeks, and a designer–analyst–developer workflow the studio still uses.</li>
+          <li><b>Result:</b> 350K players in six months, 53 minutes average playtime, 21M bonus points redeemed.</li>
+        </ul>
+        <div class="boards">
+          <figure><img src="img/g-sber.jpg" alt="Slovechki for Sber: game screens, Bukvik mascot, icons and stickers" loading="lazy"><figcaption>Mascot · UI · Icons</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Rostelecom<small>Bonus Park · 3D</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Goal:</b> introduce subscribers to a new loyalty program, get them spending bonus points, activating discounts and checking partner offers, and bring more people to the personal account and app.</li>
+          <li><b>What:</b> a 3D isometric theme park with a ticket office, gift shop and quest center. Each ride is a mini-game with prizes: a balloon shooter with 1,000+ levels, a Ferris wheel of fortune, Sea Treasures with a partner and a 30,000 RUB grand prize, and KHL table hockey.</li>
+          <li><b>My part:</b> presales with marketing and pitching to the client, then art direction, user flow, usability tests, UI/UX and the design system, from 3D modelling to testing.</li>
+          <li><b>Design:</b> AI for ride ideas and sketches, modelled in Blender. A clear, bright casual UI. Onboarding cut to three welcome pop-ups with hints, because 30% of players dropped off during onboarding in past seasons.</li>
+          <li><b>Result:</b> about 500K players and 170K completed tasks in three months, a record for this type of gamification. The new activity helped the team hit its annual marketing plan.</li>
+        </ul>
+        <div class="boards">
+          <figure><img src="img/g-rt.jpg" alt="Rostelecom Bonus Park: 3D park map, mini-games, chests and holiday screens" loading="lazy"><figcaption>Park · Mini-games · 3D assets</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>MegaFon<small>Jungle Riddle · zuma shooter</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Goal:</b> grow daily active users in the operator’s app, sell subscriptions and partner offers, and get people playing with the brand.</li>
+          <li><b>What:</b> a jungle arcade shooter where players fire balls into a spiral and match colours to clear chains. Built in about 1.5 months, Jul — Dec 2023.</li>
+          <li><b>My part:</b> art direction, user flow, usability tests, UI/UX and a design system of components, icons and styles. Midjourney for the first ideas and character sketches.</li>
+          <li><b>Business mechanics:</b> daily login bonuses, a welcome game in onboarding, a half-price retry after a loss that keeps progress, and extra attempts for completing tasks.</li>
+          <li><b>Result:</b> average spend per player grew from 30 to 150 RUB, paid service adoption rose by 30%, and a six-month pool of marketing tasks was done in two months.</li>
+        </ul>
+        <div class="boards">
+          <figure><img src="img/g-mf.jpg" alt="MegaFon Jungle Riddle: menu, win and error pop-ups, boosters, balls and the level" loading="lazy"><figcaption>Logo · UI · Game art</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Beeline<small>Zuma City · park builder</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>What:</b> a game inside the operator’s app, Mar 2023 — Jan 2024. Players build an amusement park: they win coins in an arcade shooter, spend them on building and upgrading rides, and collect likes that fill a progress bar with prizes.</li>
+          <li><b>My part:</b> art direction, user flow, UX/UI, usability tests and the design system. Research on Zuma Deluxe and Frozen City, then a prototype and user flow in about three days.</li>
+          <li><b>Design:</b> brand colours and illustrations as the base, softened with natural tones on the map. The whole isometric park is built from 2D tiles in a component system.</li>
+          <li><b>Monetization:</b> a shop selling subscriptions for game attempts, five iterations with tests, the hardest task across all my gamification projects. Plus animated hints and specs for every interactive element.</li>
+          <li><b>Lessons:</b> design, development and tests took about 2.5 months. Fewer than 3% of players went past three games after onboarding, so the project was closed. The takeaway: players want simple mechanics and quick wins.</li>
+        </ul>
+        <div class="boards">
+          <figure><img src="img/g-bee.jpg" alt="Beeline Zuma City: isometric park map, tiles, key visual and ride upgrade screen" loading="lazy"><figcaption>Isometric map · UI · Key visual</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Cowboys Galaxy<small>Indie F2P · space Western</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>What:</b> a space Western for Google Play and the App Store, made in 2020 — 2021 by an indie team building its first game. Tower defense with RPG elements; every character is an animal from the Arizona desert, led by Bill the Coati, a retired intergalactic ranger.</li>
+          <li><b>My part:</b> art direction, character and environment design, UX/UI. I led the design team and drew the game myself: the logo, heroes, NPCs, a tile system, six planets with their own maps and backgrounds, and comic-style onboarding.</li>
+          <li><b>Problems → fixes:</b> the shooting-gallery mechanic got repetitive, so we added character levels, harder levels, two new heroes, equipment cards and skills. Stiff sprite animation moved to Spine with a dedicated animator.</li>
+          <li><b>Monetization:</b> two currencies, a shop, an attempt system, loot boxes and daily login rewards.</li>
+          <li><b>Launch:</b> sprints and a design pipeline, A/B tests and corridor tests before release, store screenshots and icons for A/B tests, a gameplay video and Facebook ads.</li>
+          <li><b>What I learned:</b> the game is on hold. Without audience research and metrics, a long tutorial lost most players, a lesson I took into the client games that followed.</li>
+        </ul>
+        <div class="boards">
+          <figure><img src="img/g-cow.jpg" alt="Cowboys Galaxy Adventures: logo, characters, creatures and map" loading="lazy"><figcaption>Logo · Characters · Map</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+      </div>
+    </div>
+
+    <a class="next" href="#revgames"><span>Next case</span><b>Rev Games rebrand →</b></a>
+  </div>
+</section>
+
+<!-- CASE: REVGAMES -->
+<section class="view" id="v-revgames">
+  <div class="wrap">
+    <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#contact">Contact</a></div></nav>
+    <a class="back" href="#work">← All work</a>
+    <header class="chead">
+      <svg class="cstar" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-revgames" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop/><stop offset="1" stop-color="#FF6C02"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="url(#sg-revgames)"/></svg>
+      <h1>Rev Games <em>rebrand</em></h1>
+      <p class="sub">A new identity for the gamification studio where I led design: a bolder logo, a casual voice, a colour system and templates for social media.</p>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Art director, brand designer</dd></div>
+        <div><dt>Client</dt><dd>Rev Games</dd></div>
+        <div><dt>Scope</dt><dd>Logo, palette, pattern, templates</dd></div>
+        <div><dt>Output</dt><dd>Brand guide, social, stationery</dd></div>
+      </dl>
+    </header>
+
+    <div class="cs">
+      <h2>Logo<small>As is → to be</small></h2>
+      <div class="body">
+        <ul>
+          <li>Rev Games is a full-cycle gamification studio: custom games for FinTech, FoodTech, Retail and Telecom that plug into CRM, SSO and CDP.</li>
+          <li>I kept the crocodile and made the sign bolder and simpler, with colour, monochrome and small versions and a safe space.</li>
+        </ul>
+        <div class="gallery">
+          <figure class="wide"><img src="img/rg-logo.jpg" alt="Rev Games logo before and after" loading="lazy"><figcaption>As is / to be</figcaption></figure>
+          <figure><img src="img/rg-colors.jpg" alt="Colour and monochrome versions of the logo" loading="lazy"><figcaption>Logo versions</figcaption></figure>
+          <figure><img src="img/rg-safe.jpg" alt="Logo safe space" loading="lazy"><figcaption>Safe space</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Brand world<small>#cool #simple #casual</small></h2>
+      <div class="body">
+        <ul>
+          <li>A casual, playful voice built on three words: cool, simple, casual. Key visuals use the studio’s own games, like Cowboys Galaxy Adventures.</li>
+        </ul>
+        <div class="gallery">
+          <figure class="wide"><img src="img/rg-key.jpg" alt="Key visual: #cool #simple #casual with a game cartridge" loading="lazy"><figcaption>Key visual</figcaption></figure>
+          <figure><img src="img/rg-tag.jpg" alt="#revgames banner with a Cowboys Galaxy character on Mars" loading="lazy"></figure>
+          <figure><img src="img/rg-cow.jpg" alt="Cowboys Galaxy Adventures loading screen with the Rev Games logo" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>System<small>Colours, pattern, media</small></h2>
+      <div class="body">
+        <ul>
+          <li>A primary palette of black, electric blue and coral with three soft secondary colours, a dash pattern, social media templates and business cards.</li>
+        </ul>
+        <div class="gallery">
+          <figure><img src="img/rg-palette.jpg" alt="Colour palette: primary and secondary" loading="lazy"><figcaption>Palette</figcaption></figure>
+          <figure><img src="img/rg-pattern.jpg" alt="Pattern of blue and coral dashes on black" loading="lazy"><figcaption>Pattern</figcaption></figure>
+          <figure><img src="img/rg-social.jpg" alt="Social media post templates" loading="lazy"><figcaption>Social media</figcaption></figure>
+          <figure><img src="img/rg-cards.jpg" alt="Business cards" loading="lazy"><figcaption>Business cards</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <a class="next" href="#travel"><span>Next case</span><b>Kate Netesa travel brand →</b></a>
+  </div>
+</section>
+
+<!-- CASE: TRAVEL -->
+<section class="view" id="v-travel">
+  <div class="wrap">
+    <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#contact">Contact</a></div></nav>
+    <a class="back" href="#work">← All work</a>
+    <header class="chead">
+      <svg class="cstar" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-travel" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop/><stop offset="1" stop-color="#FF6C02"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="url(#sg-travel)"/></svg>
+      <h1>Kate Netesa <em>travel brand</em></h1>
+      <p class="sub">A personal brand for a travel blogger and the owner of KN Travel Agency and the KN Travel Hub school, which teaches people to travel without agents and overpaying. I redesigned the identity and made social media templates and design tips.</p>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Brand designer</dd></div>
+        <div><dt>Client</dt><dd>Kate Netesa, travel blogger</dd></div>
+        <div><dt>Brands</dt><dd>Personal brand, travel school</dd></div>
+        <div><dt>Scope</dt><dd>Logo, identity, social, merch</dd></div>
+      </dl>
+    </header>
+
+    <div class="cs">
+      <h2>Research<small>Old logo &amp; market</small></h2>
+      <div class="body">
+        <ul>
+          <li>Kate’s old logo came from a Canva template. I kept what worked: the monogram idea, the travel sign and the colours.</li>
+          <li>Studied travel bloggers and agencies. They sell dreams with big, beautiful photos, their own story and experience, and a clear brand, colours, fonts and tone of voice.</li>
+        </ul>
+        <div class="gallery">
+          <figure><img src="img/kn-old.jpg" alt="Previous Kate Netesa Travel Agency logo and its colours" loading="lazy"><figcaption>Old logo</figcaption></figure>
+          <figure><img src="img/kn-res1.jpg" alt="Instagram profiles of travel bloggers" loading="lazy"><figcaption>Travel bloggers</figcaption></figure>
+          <figure class="wide"><img src="img/kn-res2.jpg" alt="Travel agency websites and social pages" loading="lazy"><figcaption>Agencies</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Moodboards<small>Sign &amp; style</small></h2>
+      <div class="body">
+        <ul>
+          <li>Moodboards with short notes helped me present ideas and see how the brand would live on social media: fantasy monogram, serif with lettering, soft forms, palms and tropics, bright big type, warmth and textures.</li>
+        </ul>
+        <div class="gallery">
+          <figure><img src="img/kn-mood1.jpg" alt="Moodboard for the sign: monograms, serif lettering, negative space" loading="lazy"><figcaption>Sign</figcaption></figure>
+          <figure><img src="img/kn-mood2.jpg" alt="Moodboard for the style: palms, tropics, bright typography" loading="lazy"><figcaption>Style</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>The sign<small>Monogram</small></h2>
+      <div class="body">
+        <ul>
+          <li>First sketches on iPad, then vector signs in Illustrator.</li>
+          <li>The final sign joins Kate’s KN monogram with a north star, a symbol of all travellers. It works on its own or with the full name.</li>
+        </ul>
+        <div class="gallery">
+          <figure><img src="img/kn-sk1.jpg" alt="Hand-drawn KN monogram sketches in orange on blue" loading="lazy"><figcaption>iPad sketches</figcaption></figure>
+          <figure><img src="img/kn-sk2.jpg" alt="More monogram sketches in orange on blue" loading="lazy"></figure>
+          <figure><img src="img/kn-kayak.jpg" alt="Travel school sketch over a kayak photo" loading="lazy"><figcaption>Sketches on photos</figcaption></figure>
+          <figure><img src="img/kn-palms.jpg" alt="Orange travel school mark over night palms" loading="lazy"></figure>
+          <figure class="wide"><img src="img/kn-vec.jpg" alt="Vector monogram drafts in Illustrator" loading="lazy"><figcaption>Vector drafts</figcaption></figure>
+          <figure class="wide"><img src="img/kn-build.jpg" alt="Logo construction: north star plus first letters equals the sign and the logotype" loading="lazy"><figcaption>North star + KN = the sign</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Travel school<small>Second brand</small></h2>
+      <div class="body">
+        <ul>
+          <li>The personal brand leads, so the school sits next to the monogram with its own sign: an open book shaped like a palm tree.</li>
+        </ul>
+        <div class="gallery">
+          <figure class="wide"><img src="img/kn-combo.jpg" alt="Kate Netesa logotype with travel school badge variants" loading="lazy"><figcaption>Brand combinations</figcaption></figure>
+          <figure class="wide"><img src="img/kn-school.jpg" alt="Travel school logo and the palm-book sign" loading="lazy"><figcaption>Travel school sign</figcaption></figure>
+          <figure class="wide"><img src="img/kn-cover.jpg" alt="Travel school logo on a purple palm-leaf pattern" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Result<small>Logo book &amp; templates</small></h2>
+      <div class="body">
+        <ul>
+          <li>Kate got a mini logo book with social media templates, plus merch concepts and business cards.</li>
+        </ul>
+        <div class="gallery">
+          <figure class="wide"><img src="img/kn-insta.jpg" alt="Instagram post templates in purple, lime and black" loading="lazy"><figcaption>Instagram posts</figcaption></figure>
+          <figure class="wide"><img src="img/kn-merch.jpg" alt="Merch: T-shirt, business cards and a bottle" loading="lazy"><figcaption>Merch &amp; business cards</figcaption></figure>
+          <figure class="wide"><img src="img/kn-all.jpg" alt="Overview of the identity: posts, cards and patterns" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+
+    <a class="next" href="#sports"><span>Next case</span><b>Sports illustration →</b></a>
+  </div>
+</section>
+
+<!-- CASE: SPORTS -->
+<section class="view" id="v-sports">
+  <div class="wrap">
+    <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#contact">Contact</a></div></nav>
+    <a class="back" href="#work">← All work</a>
+    <header class="chead">
+      <svg class="cstar" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-sports" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop/><stop offset="1" stop-color="#FF6C02"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="url(#sg-sports)"/></svg>
+      <h1>Sports <em>illustration</em></h1>
+      <p class="sub">Posters, merch and illustrations for sports events, mostly freestyle football: championship posters, T-shirts, a Telegram sticker pack and betting banners.</p>
+      <dl class="facts">
+        <div><dt>Role</dt><dd>Illustrator, graphic designer</dd></div>
+        <div><dt>Period</dt><dd>2019 — 2024</dd></div>
+        <div><dt>Events</dt><dd>NK Freestyle Voetbal, World Open, US Open</dd></div>
+        <div><dt>Scope</dt><dd>Posters, merch, stickers, banners</dd></div>
+      </dl>
+    </header>
+
+    <div class="cs">
+      <h2>Posters<small>Freestyle football</small></h2>
+      <div class="body">
+        <ul>
+          <li>Posters for the Dutch Freestyle Football Championships from 2019 to 2023 and the World Open Freestyle Football &amp; Footbag Championships 2024.</li>
+        </ul>
+        <div class="gallery">
+          <figure><img src="img/sp-p19.jpg" alt="NK Freestyle Voetbal 2019 poster" loading="lazy"><figcaption>2019</figcaption></figure>
+          <figure><img src="img/sp-p22.jpg" alt="NK Freestyle Voetbal 2022 poster" loading="lazy"><figcaption>2022</figcaption></figure>
+          <figure><img src="img/sp-p23.jpg" alt="NK Freestyle Voetbal 2023 poster" loading="lazy"><figcaption>2023</figcaption></figure>
+          <figure><img src="img/sp-p24.jpg" alt="World Open Freestyle Football and Footbag Championships 2024 poster" loading="lazy"><figcaption>World Open 2024</figcaption></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>T-shirts<small>Character + lettering</small></h2>
+      <div class="body">
+        <ul>
+          <li>Characters and hand lettering for freestyle football tees and championship merch.</li>
+        </ul>
+        <div class="gallery">
+          <figure><img src="img/sp-t1.jpg" alt="T-shirt front: Do your thing character with lettering" loading="lazy"><figcaption>Do your thing</figcaption></figure>
+          <figure><img src="img/sp-t2.jpg" alt="T-shirt back: Express yourself lettering" loading="lazy"><figcaption>Express yourself</figcaption></figure>
+          <figure><img src="img/sp-t3.jpg" alt="JFFC 2023 championship T-shirt" loading="lazy"><figcaption>JFFC 2023</figcaption></figure>
+          <figure><img src="img/sp-jp.jpg" alt="Japanese freestyler illustration for the JFFC T-shirt" loading="lazy"></figure>
+          <figure><img src="img/sp-t4.jpg" alt="Black freestyle T-shirt with photo and quote" loading="lazy"><figcaption>Words of Kala</figcaption></figure>
+          <figure><img src="img/sp-rabbit.jpg" alt="Skateboarding rabbit illustration with carrots" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Betting banners<small>US Open</small></h2>
+      <div class="body">
+        <ul>
+          <li>Illustrations for web betting banners during the US Open.</li>
+        </ul>
+        <div class="gallery">
+          <figure><img src="img/sp-us1.jpg" alt="Tennis players illustration for a US Open banner" loading="lazy"></figure>
+          <figure><img src="img/sp-us2.jpg" alt="Tennis court and racket illustration for a US Open banner" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Stickers<small>FS Bible for Telegram</small></h2>
+      <div class="body">
+        <ul>
+          <li>A Telegram sticker pack of freestyle football characters with hand-lettered phrases.</li>
+        </ul>
+        <div class="gallery">
+          <figure class="wide"><img src="img/sp-stickers.jpg" alt="Telegram stickers: Cait do it, This is not freestyle, Lucaso approves, It’s just a prank bro, So handsome" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs">
+      <h2>Cat’s activities<small>Personal series</small></h2>
+      <div class="body">
+        <ul>
+          <li>A personal series of cats doing extreme sports.</li>
+        </ul>
+        <div class="gallery">
+          <figure><img src="img/sp-cat1.jpg" alt="Cat snowboarding with Max-Wax board" loading="lazy"></figure>
+          <figure><img src="img/sp-cat2.jpg" alt="Cat on a BMX bike doing a trick" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+
+    <a class="next" href="#onebullex"><span>Next case</span><b>OneBullEx →</b></a>
+  </div>
+</section>
+
+<!-- placeholder view for unfinished cases -->
+<section class="view" id="v-soon">
+  <div class="wrap">
+    <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#contact">Contact</a></div></nav>
+    <a class="back" href="#work">← All work</a>
+    <header class="chead"><h1 id="soon-title">Case <em>in progress</em></h1><p class="sub">This case is in the prototype only as a cover for now. The full page will follow the A-ADS Group layout.</p></header>
+  </div>
+</section>
+
+<script>
+(function(){
+  var views={home:'v-home',work:'v-home',about:'v-home',contact:'v-home','a-ads-group':'v-a-ads-group',onebullex:'v-onebullex',games:'v-games',revgames:'v-revgames',travel:'v-travel',sports:'v-sports'};
+  var titles={onebullex:'OneBull<em>Ex</em>',wordly:'Slovechki <em>for Sber</em>',park:'Theme park <em>for Rostelecom</em>'};
+  function show(){
+    var h=(location.hash||'#home').slice(1); var id=views[h]||'v-home';
+    document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('on',v.id===id)});
+    if(id==='v-soon'){document.getElementById('soon-title').innerHTML=titles[h]||'Case'}
+    if(id==='v-home' && h!=='home' && document.getElementById(h)){document.getElementById(h).scrollIntoView()} else {window.scrollTo(0,0)}
+  }
+  window.addEventListener('hashchange',show); show();
+})();
+</script>
+<script>
+/* cursor trail in the hero: Sveta's icons appear where the cursor passes, cycle in order and fade out in place */
+(function(){
+  if(matchMedia('(pointer:coarse)').matches||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var GAP=40,lt=0,icons=['img/ic-1.png','img/ic-2.png','img/ic-3.png','img/ic-4.png','img/ic-5.png','img/ic-6.png','img/ic-7.png','img/ic-8.png'],k=0,last=null,STEP=46;
+  function zoneBottom(){var s=document.querySelector('#v-home .stats');return s?s.getBoundingClientRect().bottom+scrollY:0}
+  function navBottom(){var n=document.querySelector('#v-home .nav');return n?n.getBoundingClientRect().bottom+scrollY+24:0}
+  function footTop(){var f=document.querySelector('#v-home .ft');return f?f.getBoundingClientRect().top+scrollY:1e9}
+  addEventListener('mousemove',function(e){
+    if(!document.getElementById('v-home').classList.contains('on'))return;
+    var x=e.pageX,y=e.pageY;
+    if(y<navBottom()||(y>zoneBottom()&&y<footTop())){last=null;return}
+    var now=performance.now();
+    if(!last){last=[x,y];lt=now;return}
+    if(last[0]===x&&last[1]===y)return;
+    var n=Math.min(12,Math.floor((now-lt)/GAP));if(n<1)return;
+    for(var j=1;j<=n;j++){
+      var px=last[0]+(x-last[0])*j/n,py=last[1]+(y-last[1])*j/n;
+      if(py<navBottom())continue;
+      var im=document.createElement('img');im.className='trail';im.alt='';im.src=icons[k++%icons.length];
+      im.style.left=px+'px';im.style.top=py+'px';im.style.setProperty('--r',(Math.random()*40-20).toFixed(0)+'deg');
+      im.addEventListener('animationend',function(){this.remove()});
+      document.body.appendChild(im);
+    }
+    lt=now;last=[x,y];
+  },{passive:true});
+})();
+</script>
+<script>
+/* CV button: inside the claude.ai viewer, plain download links are blocked, so hand the PDF over through the downloads capability; on the real site the link works as is */
+(function(){
+  if(!window.claude||!claude.use)return;
+  claude.use("downloads").then(function(dl){
+    if(!dl)return;
+    document.querySelectorAll('.cv-btn').forEach(function(a){
+      a.addEventListener('click',function(e){
+        e.preventDefault();
+        fetch(a.getAttribute('href')).then(function(r){if(!r.ok)throw 0;return r.blob()})
+          .then(function(b){return dl.save({filename:'CV_Svetlana_Loginova.pdf',data:b})})
+          .catch(function(){});
+      });
+    });
+  });
+})();
+</script>
+<script>
+/* drag the hero photo and the footer bear anywhere with mouse or finger; uses the CSS translate property so the photo keeps its tilt */
+(function(){
+  document.querySelectorAll('.drag').forEach(function(el){
+    var sx,sy,ox=0,oy=0,id=null;
+    el.addEventListener('pointerdown',function(e){id=e.pointerId;el.setPointerCapture(id);sx=e.clientX-ox;sy=e.clientY-oy;el.classList.add('dragging');e.preventDefault()});
+    el.addEventListener('pointermove',function(e){if(e.pointerId!==id)return;ox=e.clientX-sx;oy=e.clientY-sy;el.style.translate=ox+'px '+oy+'px'});
+    function end(e){if(e.pointerId!==id)return;id=null;el.classList.remove('dragging')}
+    el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);
+  });
+})();
+</script>
+<script>
+document.querySelectorAll('a.yt[data-yt]').forEach(function(a){
+  var f=document.createElement('iframe');
+  f.src='https://www.youtube-nocookie.com/embed/'+a.dataset.yt+'?rel=0';
+  f.title=a.getAttribute('aria-label')||'Video';f.loading='lazy';f.allowFullscreen=true;
+  f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+  f.style.cssText='display:block;width:100%;aspect-ratio:16/9;border:0;background:#000';
+  a.replaceWith(f);
+});
+</script>
