@@ -140,6 +140,18 @@ a:focus-visible{outline:2px solid var(--or);outline-offset:3px}
 .vids .yt:hover .play{transform:scale(1.08)}
 .vids iframe{display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line);background:var(--bg-2)}
 .vids figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.reels-h{margin:56px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.6vw,36px);display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.reels-h small{font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.reels{column-count:4;column-gap:16px;margin-top:20px}
+.reel{position:relative;margin:0 0 16px;break-inside:avoid;background:var(--bg-2);overflow:hidden;outline:1px solid var(--line);outline-offset:-1px}
+.reel video{display:block;width:100%;height:auto;object-fit:cover;background:var(--bg-2)}
+.reel .snd{position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;background:var(--or);opacity:.9;transition:transform .2s}
+.reel .snd:before{content:"";position:absolute;left:8px;top:10px;width:5px;height:10px;background:#fff;box-shadow:0 0 0 0 #fff}
+.reel .snd:after{content:"";position:absolute;left:10px;top:7px;border-right:8px solid #fff;border-top:8px solid transparent;border-bottom:8px solid transparent}
+.reel.on .snd{transform:scale(1.15);box-shadow:0 0 0 4px rgba(0,34,255,.25)}
+.reel:not(.on) .snd{background:#0c0c0c}
+@media (max-width:1100px){.reels{column-count:3}}
+@media (max-width:700px){.reels{column-count:2;column-gap:10px}.reel{margin-bottom:10px}}
 .vids figcaption a{color:var(--or);text-decoration:none;white-space:nowrap}
 .icons{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
 .icons figure{margin:0;min-width:0}
@@ -694,6 +706,30 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
           <figure><a class="yt" href="https://youtu.be/yanXqfG_Pqg" target="_blank" rel="noopener" data-yt="yanXqfG_Pqg" aria-label="Play: Trade smarter with AI. Meet OneBullEx"><span class="play"></span><b>Trade smarter with AI. Meet OneBullEx</b></a><figcaption><span>Video</span><a href="https://youtu.be/yanXqfG_Pqg" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
           <figure><a class="yt" href="https://youtu.be/HZbxCVuogqs" target="_blank" rel="noopener" data-yt="HZbxCVuogqs" aria-label="Play: SPARTANS strategy &amp; TradFi markets"><span class="play"></span><b>SPARTANS strategy &amp; TradFi markets</b></a><figcaption><span>Video</span><a href="https://youtu.be/HZbxCVuogqs" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
           <figure class="wide"><a class="yt" href="https://youtu.be/aEm2hF7XJnU" target="_blank" rel="noopener" data-yt="aEm2hF7XJnU" aria-label="Play: OneBullEx Mastercard tutorial"><span class="play"></span><b>OneBullEx Mastercard tutorial</b></a><figcaption><span>Video</span><a href="https://youtu.be/aEm2hF7XJnU" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
+        </div>
+        <h3 class="reels-h">Social &amp; ads<small>21 videos · tap for sound</small></h3>
+        <div class="reels">
+          <figure class="reel"><video data-src="img/rv-tiger.mp4" poster="img/rp-tiger.jpg" style="aspect-ratio:9/16" muted loop playsinline preload="none" aria-label="OneBullEx video: tiger"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-tap-pay-go-2.mp4" poster="img/rp-x-tap-pay-go-2.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x tap pay go 2"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-bull-vs-owl.mp4" poster="img/rp-bull-vs-owl.jpg" style="aspect-ratio:9/16" muted loop playsinline preload="none" aria-label="OneBullEx video: bull vs owl"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-obex-card-holders-2.mp4" poster="img/rp-x-obex-card-holders-2.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x obex card holders 2"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-web3-tradfi.mp4" poster="img/rp-web3-tradfi.jpg" style="aspect-ratio:16/9" muted loop playsinline preload="none" aria-label="OneBullEx video: web3 tradfi"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-shiba-office-meme4.mp4" poster="img/rp-shiba-office-meme4.jpg" style="aspect-ratio:9/16" muted loop playsinline preload="none" aria-label="OneBullEx video: shiba office meme4"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-144p.mp4" poster="img/rp-x-144p.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x 144p"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-sofa-tradfi.mp4" poster="img/rp-sofa-tradfi.jpg" style="aspect-ratio:9/16" muted loop playsinline preload="none" aria-label="OneBullEx video: sofa tradfi"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-spartan-in-cybercab2.mp4" poster="img/rp-spartan-in-cybercab2.jpg" style="aspect-ratio:16/9" muted loop playsinline preload="none" aria-label="OneBullEx video: spartan in cybercab2"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-omg-spartan2.mp4" poster="img/rp-x-omg-spartan2.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x omg spartan2"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-vacation.mp4" poster="img/rp-vacation.jpg" style="aspect-ratio:9/16" muted loop playsinline preload="none" aria-label="OneBullEx video: vacation"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-liberty.mp4" poster="img/rp-x-liberty.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x liberty"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-zootradfi.mp4" poster="img/rp-zootradfi.jpg" style="aspect-ratio:9/16" muted loop playsinline preload="none" aria-label="OneBullEx video: zootradfi"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-hands.mp4" poster="img/rp-x-hands.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x hands"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-tradfi-spartans-1.mp4" poster="img/rp-tradfi-spartans-1.jpg" style="aspect-ratio:16/9" muted loop playsinline preload="none" aria-label="OneBullEx video: tradfi spartans 1"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-meme-contest.mp4" poster="img/rp-x-meme-contest.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x meme contest"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-obex-mastercard.mp4" poster="img/rp-obex-mastercard.jpg" style="aspect-ratio:9/16" muted loop playsinline preload="none" aria-label="OneBullEx video: obex mastercard"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-eng-x-downloadtheapp.mp4" poster="img/rp-eng-x-downloadtheapp.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: eng x downloadtheapp"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-apple-duo.mp4" poster="img/rp-x-apple-duo.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x apple duo"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-spartan-mode-on.mp4" poster="img/rp-x-spartan-mode-on.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x spartan mode on"></video><span class="snd" aria-hidden="true"></span></figure>
+          <figure class="reel"><video data-src="img/rv-x-on-off.mp4" poster="img/rp-x-on-off.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: x on off"></video><span class="snd" aria-hidden="true"></span></figure>
         </div>
       </div>
     </div>
@@ -1311,6 +1347,21 @@ addEventListener('blur',function(){document.documentElement.classList.remove('pr
   w.addEventListener('click',function(){w.classList.remove('flinch');void w.offsetWidth;w.classList.add('flinch');wake();
     pus.forEach(function(p){p.style.height='40%';setTimeout(function(){p.style.height=''},700)})});
   wake();
+})();
+</script>
+<script>
+/* social video grid: load and play muted while on screen; tap a tile to hear it (mutes the others) */
+(function(){
+  var tiles=[].slice.call(document.querySelectorAll('.reel'));if(!tiles.length)return;
+  function v(t){return t.querySelector('video')}
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){var vid=v(e.target);
+    if(e.isIntersecting){if(!vid.src)vid.src=vid.dataset.src;var p=vid.play();if(p&&p.catch)p.catch(function(){})}else if(vid.src)vid.pause()})},{threshold:.35}):null;
+  tiles.forEach(function(t){
+    if(io)io.observe(t);else{v(t).src=v(t).dataset.src}
+    t.addEventListener('click',function(){var vid=v(t),turnOn=vid.muted;
+      tiles.forEach(function(o){v(o).muted=true;o.classList.remove('on')});
+      if(turnOn){if(!vid.src)vid.src=vid.dataset.src;vid.muted=false;vid.play();t.classList.add('on')}});
+  });
 })();
 </script>
 <script>
