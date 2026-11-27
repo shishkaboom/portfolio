@@ -1197,7 +1197,7 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
 /* pixel text cylinder around the hero photo (two rows spinning in 3D); the back copy sits under the photo, the front copy with hidden backfaces sits above it */
 (function(){
   var ph=document.querySelector('.hero .photo'),rings=[].slice.call(document.querySelectorAll('.ring'));if(!ph||rings.length<2)return;
-  var hero=ph.parentNode,ROWS=['CRYPTO // FINTECH // GAMIFICATION // ','BRAND // CAMPAIGNS // VIDEO // '],key='',rows=[],t0=performance.now(),still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var hero=ph.parentNode,ROWS=['CRYPTO // FINTECH // GAMIFICATION // '],key='',rows=[],t0=performance.now(),still=matchMedia('(prefers-reduced-motion:reduce)').matches;
   function build(R,fs){
     var W={},probe=document.createElement('b');probe.style.fontSize=fs+'px';rings[0].appendChild(probe);
     function cw(c){if(!(c in W)){probe.textContent=c===' '?'\u00a0':c;W[c]=probe.getBoundingClientRect().width+fs*.06}return W[c]}
