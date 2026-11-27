@@ -142,7 +142,16 @@ a:focus-visible{outline:2px solid var(--or);outline-offset:3px}
 .vids figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
 .reels-h{margin:56px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.6vw,36px);display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
 .reels-h small{font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-.tpl{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}.tpl figure{margin:0;outline:1px solid var(--line);outline-offset:-1px;background:var(--bg-2)}.tpl img{display:block;width:100%;height:auto;aspect-ratio:1}@media (max-width:700px){.tpl{grid-template-columns:repeat(2,1fr);gap:10px}}.reel.big{margin:16px 0 0}.hvids{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.hvids .reel{margin:0}@media (max-width:700px){.hvids{grid-template-columns:1fr;gap:10px}}.reel.big .snd{width:40px;height:40px;right:16px;bottom:16px}.reel.big .snd:before{left:12px;top:15px}.reel.big .snd:after{left:14px;top:12px}
+.tpl{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}.tpl figure{margin:0;outline:1px solid var(--line);outline-offset:-1px;background:var(--bg-2)}.tpl img{display:block;width:100%;height:auto;aspect-ratio:1}@media (max-width:700px){.tpl{grid-template-columns:repeat(2,1fr);gap:10px}}.tpl .span2{grid-column:span 2}.tpl .span2{position:relative}.tpl .span2 img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover}
+.lb{position:fixed;inset:0;z-index:65;display:none;align-items:center;justify-content:center;background:rgba(8,10,24,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;transition:opacity .2s}
+.lb.open{display:flex}.lb.vis{opacity:1}
+.lb img{max-width:min(88vw,1400px);max-height:84vh;width:auto;height:auto;display:block;box-shadow:0 20px 60px rgba(0,0,0,.35);background:#fff}
+.lb button{position:absolute;border:0;background:#fff;color:#0022FF;width:48px;height:48px;border-radius:50%;font:400 26px/1 var(--sans);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s}
+.lb button:hover{transform:scale(1.08);background:#0022FF;color:#fff}
+.lb .x{top:20px;right:20px}.lb .pv{left:20px;top:50%;margin-top:-24px}.lb .nx{right:20px;top:50%;margin-top:-24px}
+.lb .lbc{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;font:12px var(--sans);letter-spacing:.12em}
+@media (max-width:700px){.lb img{max-width:94vw;max-height:78vh}.lb .pv,.lb .nx{top:auto;bottom:12px;margin:0;width:42px;height:42px}.lb .x{top:12px;right:12px}}
+.reel.big{margin:16px 0 0}.hvids{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.hvids .reel{margin:0}@media (max-width:700px){.hvids{grid-template-columns:1fr;gap:10px}}.reel.big .snd{width:40px;height:40px;right:16px;bottom:16px}.reel.big .snd:before{left:12px;top:15px}.reel.big .snd:after{left:14px;top:12px}
 .reels{column-count:4;column-gap:16px;margin-top:20px}
 .reel{position:relative;margin:0 0 16px;break-inside:avoid;background:var(--bg-2);overflow:hidden;outline:1px solid var(--line);outline-offset:-1px}
 .reel video{display:block;width:100%;height:auto;object-fit:cover;background:var(--bg-2)}
@@ -778,10 +787,46 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
           <figure><img src="img/tp-29.jpg" alt="OneBullEx social template" loading="lazy"></figure>
           <figure><img src="img/tp-30.jpg" alt="OneBullEx social template" loading="lazy"></figure>
         </div>
-        <h3 class="reels-h">Creatives<small>Key visuals</small></h3>
+        <h3 class="reels-h">Creatives<small>38 visuals</small></h3>
         <div class="tpl">
+          <figure class="span2"><img src="img/tp-33.jpg" alt="OneBullEx creative" loading="lazy"></figure>
           <figure><img src="img/tp-22.jpg" alt="OneBullEx creative" loading="lazy"></figure>
           <figure><img src="img/tp-05.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-34.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-35.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-36.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-37.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-38.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-39.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-40.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-41.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-42.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-43.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-44.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-45.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-46.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-47.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-48.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-49.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-50.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-51.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-52.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-53.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-54.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-55.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-56.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-57.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-58.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-59.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-60.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-61.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-62.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-63.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-64.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-65.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-66.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-67.jpg" alt="OneBullEx creative" loading="lazy"></figure>
+          <figure><img src="img/tp-68.jpg" alt="OneBullEx creative" loading="lazy"></figure>
         </div>
       </div>
     </div>
@@ -1411,6 +1456,24 @@ addEventListener('blur',function(){document.documentElement.classList.remove('pr
       tiles.forEach(function(o){v(o).muted=true;o.classList.remove('on')});
       if(turnOn){if(!vid.src)vid.src=vid.dataset.src;vid.muted=false;vid.play();t.classList.add('on')}});
   });
+})();
+</script>
+
+<div class="lb" role="dialog" aria-modal="true" aria-label="Image viewer"><img alt=""><button class="pv" aria-label="Previous">&#8592;</button><button class="nx" aria-label="Next">&#8594;</button><button class="x" aria-label="Close">&#10005;</button><span class="lbc"></span></div>
+<script>
+/* lightbox: click any case image to view it large; arrows, keys and swipe move through the images of that case */
+(function(){
+  var lb=document.querySelector('.lb'),im=lb.querySelector('img'),ct=lb.querySelector('.lbc'),list=[],i=0,x0=null;
+  function ok(t){return t&&t.tagName==='IMG'&&t.closest('figure')&&!t.closest('a')&&t.closest('[id^="v-"]')&&!t.closest('#v-home')}
+  function show(){var e=list[i];im.src=e.currentSrc||e.src;im.alt=e.alt||'';ct.textContent=(i+1)+' / '+list.length;lb.querySelector('.pv').style.display=lb.querySelector('.nx').style.display=list.length>1?'':'none'}
+  function open(e){var v=e.closest('[id^="v-"]');list=[].slice.call(v.querySelectorAll('figure img')).filter(ok);i=list.indexOf(e);show();lb.classList.add('open');requestAnimationFrame(function(){lb.classList.add('vis')});document.documentElement.style.overflow='hidden'}
+  function close(){lb.classList.remove('vis');setTimeout(function(){lb.classList.remove('open')},200);document.documentElement.style.overflow=''}
+  function go(d){i=(i+d+list.length)%list.length;show()}
+  document.addEventListener('click',function(e){if(ok(e.target)){e.preventDefault();open(e.target)}});
+  lb.addEventListener('click',function(e){var t=e.target;if(t.classList.contains('pv'))go(-1);else if(t.classList.contains('nx'))go(1);else if(t===lb||t.classList.contains('x'))close()});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1)});
+  lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)go(dx<0?1:-1);x0=null});
 })();
 </script>
 <script>
