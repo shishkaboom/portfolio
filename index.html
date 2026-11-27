@@ -229,13 +229,8 @@ a.ft-cta:hover .l2 i,a.ft-cta:focus-visible .l2 i{background:var(--or);color:#ff
 .photo.drag{z-index:5}
 .ring{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
 .ring.rb{z-index:1}.ring.rf{z-index:7}
-.ring .tilt,.ring .spin{position:absolute;left:0;top:0;transform-style:preserve-3d}
-.ring .tilt{transform:rotateZ(-10deg) rotateX(-30deg)}
-.ring .spin{animation:ringspin 22s linear infinite}
-@keyframes ringspin{to{transform:rotateY(-360deg)}}
-.ring b{position:absolute;left:0;top:0;font-family:var(--sans);font-weight:600;color:var(--or);text-transform:uppercase;line-height:1;white-space:pre}
-.ring.rf b{backface-visibility:hidden;-webkit-backface-visibility:hidden}
-@media (prefers-reduced-motion:reduce){.ring .spin{animation:none}}
+.ring b{position:absolute;left:0;top:0;font-family:var(--sans);font-weight:700;color:var(--or);text-transform:uppercase;line-height:1;white-space:pre;will-change:transform;
+  text-shadow:.05em .05em 0 #001ad1,.1em .1em 0 #0015b0,.15em .15em 0 #00118f}
 .drag{touch-action:none;user-select:none;-webkit-user-drag:none}.drag.dragging{z-index:50}
 .ft-gif{position:absolute;left:58%;top:-.5vw;width:19vw;aspect-ratio:797/652;object-fit:cover;z-index:2}
 .ft-nav{display:flex;justify-content:center;gap:12px clamp(32px,10vw,180px)!important;gap:12px 24px;flex-wrap:wrap;border-block:1px solid #e4e2de;padding:clamp(18px,2.4vw,40px) clamp(16px,2.2vw,44px);font-size:clamp(15px,2vw,34px);letter-spacing:.04em;text-transform:uppercase}
@@ -449,7 +444,7 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
   <div class="hero">
     <svg class="star" viewBox="0 0 879 717" aria-hidden="true"><defs><radialGradient id="sg-hero" cx="0" cy="0" r="1" gradientTransform="matrix(-550.93 31.6797 -403.012 -598.026 461.336 312.421)" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#0022FF"/></radialGradient></defs><path d="M363.496 386.533L0 495.587L377.672 303.916L191.662 128.769L436.196 241.127L535.331 0L527.694 212.832L777.149 73.2701L573.049 271.274L879 303.916L518.808 350.182L535.331 627.774L436.196 386.533L152.008 717L363.496 386.533Z" fill="#0022FF"/></svg>
     <img class="photo drag" draggable="false" src="img/photo.jpg" alt="Svetlana Loginova">
-    <div class="ring rb" aria-hidden="true"><div class="tilt"><div class="spin"></div></div></div><div class="ring rf" aria-label="Crypto, Fintech, Gamification"><div class="tilt"><div class="spin"></div></div></div>
+    <div class="ring rb" aria-hidden="true"></div><div class="ring rf" aria-label="Crypto, Fintech, Gamification"></div>
     <div class="wrap">
       <nav class="nav"><a href="#home">S. Loginova</a><div class="links"><a href="#work">Work</a><a href="#about" class="hide-s">About</a><a href="#contact">Contact</a></div></nav>
       <h1>Svetlana<span class="l2row"><span class="h1role">Senior Brand &amp;<br>Visual Designer</span><em>Loginova</em></span></h1>
@@ -1160,25 +1155,37 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
 })();
 </script>
 <script>
-/* 3D running text ring around the hero photo: letters stand on a spinning cylinder; the back copy sits under the photo, the front copy (backfaces hidden) above it */
+/* isometric running text ring around the hero photo: extruded letters travel along a tilted ellipse; the back half passes under the photo */
 (function(){
-  var ph=document.querySelector('.hero .photo'),rings=[].slice.call(document.querySelectorAll('.ring'));if(!ph||rings.length<2)return;
-  var hero=ph.parentNode,PH='CRYPTO \u00b7 FINTECH \u00b7 GAMIFICATION \u00b7 ',key='';
-  function build(R,fs){
-    var W={},probe=document.createElement('b');probe.style.fontSize=fs+'px';rings[0].appendChild(probe);
+  var ph=document.querySelector('.hero .photo'),rb=document.querySelector('.ring.rb'),rf=document.querySelector('.ring.rf');if(!ph||!rb||!rf)return;
+  var hero=ph.parentNode,PH='CRYPTO \u00b7 FINTECH \u00b7 GAMIFICATION \u00b7 ',key='',L=[],P=[],total=0,off=0,still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var TILT=-10*Math.PI/180;
+  function build(rx,ry,fs){
+    /* sample the ellipse into an arc-length table */
+    P=[];total=0;var M=720,px=rx,py=0;
+    for(var s=0;s<=M;s++){var a=s/M*2*Math.PI,x=rx*Math.cos(a),y=ry*Math.sin(a);if(s)total+=Math.hypot(x-px,y-py);P.push([total,a]);px=x;py=y}
+    var W={},probe=document.createElement('b');probe.style.fontSize=fs+'px';probe.style.textShadow='none';rb.appendChild(probe);
     function cw(c){if(!(c in W)){probe.textContent=c===' '?'\u00a0':c;W[c]=probe.getBoundingClientRect().width+fs*.12}return W[c]}
     var seg=0;for(var j=0;j<PH.length;j++)seg+=cw(PH[j]);probe.remove();
-    var circ=2*Math.PI*R,reps=Math.max(1,Math.round(circ/seg)),txt=new Array(reps+1).join(PH),k2=circ/(seg*reps),pos=0,h='';
-    for(var i=0;i<txt.length;i++){var c=txt[i],w=cw(c)*k2;if(c!==' ')h+='<b style="font-size:'+fs+'px;transform:rotateY('+((pos+w/2)/circ*360).toFixed(3)+'deg) translateZ('+R+'px) translate(-50%,-50%)">'+c+'</b>';pos+=w}
-    rings.forEach(function(rg){rg.querySelector('.spin').innerHTML=h});
+    var reps=Math.max(1,Math.round(total/seg)),txt=new Array(reps+1).join(PH),k=total/(seg*reps),pos=0;L=[];rb.innerHTML='';rf.innerHTML='';
+    for(var i=0;i<txt.length;i++){var c=txt[i],w=cw(c)*k;if(c!==' '){var e1=document.createElement('b'),e2=document.createElement('b');e1.textContent=e2.textContent=c;e1.style.fontSize=e2.style.fontSize=fs+'px';rb.appendChild(e1);rf.appendChild(e2);L.push({s:pos+w/2,b:e1,f:e2})}pos+=w}
   }
+  function angleAt(s){s=((s%total)+total)%total;var lo=0,hi=P.length-1;while(hi-lo>1){var m=(lo+hi)>>1;if(P[m][0]<s)lo=m;else hi=m}var t=(s-P[lo][0])/((P[hi][0]-P[lo][0])||1);return P[lo][1]+(P[hi][1]-P[lo][1])*t}
   function loop(){
     var hr=hero.getBoundingClientRect(),r=ph.getBoundingClientRect(),cx=r.left-hr.left+r.width/2,cy=r.top-hr.top+r.height/2;
-    var R=Math.round(r.width*.72),fs=Math.max(11,Math.min(18,Math.round(r.width/18)));
-    var k=R+'/'+fs;if(k!==key){key=k;build(R,fs)}
-    rings.forEach(function(rg){rg.style.transform='translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px)'});
+    var rx=Math.round(r.width*.74),ry=Math.round(r.height*.24),fs=Math.max(11,Math.min(19,Math.round(r.width/17)));
+    var kk=rx+'/'+ry+'/'+fs;if(kk!==key){key=kk;build(rx,ry,fs)}
+    var ct=Math.cos(TILT),st=Math.sin(TILT);
+    L.forEach(function(o){
+      var a=angleAt(o.s+off),x=rx*Math.cos(a),y=-ry*Math.sin(a),front=y>0;
+      var tx=-rx*Math.sin(a),ty=-ry*Math.cos(a),rot=Math.atan2(ty,tx)*180/Math.PI+(front?0:180)+TILT*180/Math.PI;
+      var X=cx+x*ct-y*st,Y=cy+x*st+y*ct,tr='translate('+X.toFixed(1)+'px,'+Y.toFixed(1)+'px) translate(-50%,-50%) rotate('+rot.toFixed(1)+'deg)';
+      o.f.style.transform=o.b.style.transform=tr;o.f.style.visibility=front?'visible':'hidden';o.b.style.opacity=front?1:.55;
+    });
+    if(!still)off+=0.5;
     requestAnimationFrame(loop);
   }
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){key=''});
   loop();
 })();
 </script>
