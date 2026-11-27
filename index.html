@@ -153,7 +153,7 @@ a:focus-visible{outline:2px solid var(--or);outline-offset:3px}
 .lb .lbc{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;font:12px var(--sans);letter-spacing:.12em}
 @media (max-width:700px){.lb img{max-width:94vw;max-height:78vh}.lb .pv,.lb .nx{top:auto;bottom:16px;margin:0;width:56px;height:56px}.lb .pv{left:16px}.lb .nx{right:16px}.lb .x{top:12px;right:12px}}
 .bbk{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 56px}.bbk figure{margin:0;background:#000}.bbk .w{grid-column:1/-1}.bbk img{display:block;width:100%;height:auto;aspect-ratio:16/9}@media (max-width:700px){.bbk{grid-template-columns:1fr;gap:10px}}
-.cpg{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;margin:8px 0 56px}.cpg figure{margin:0;outline:1px solid var(--line);outline-offset:-1px}.cpg .w{grid-column:1/-1}.cpg img{display:block;width:100%;height:auto}@media (max-width:700px){.cpg{grid-template-columns:1fr;gap:10px}}
+.cpg{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;margin:8px 0 56px}.cpg figure{margin:0;outline:1px solid var(--line);outline-offset:-1px}.cpg .w{grid-column:1/-1}.cpg .fill{align-self:stretch;background:#000;display:flex;align-items:center}.cpg img{display:block;width:100%;height:auto}@media (max-width:700px){.cpg{grid-template-columns:1fr;gap:10px}}
 .reel.big{margin:16px 0 0}.hvids{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.hvids .reel{margin:0}@media (max-width:700px){.hvids{grid-template-columns:1fr;gap:10px}}.reel.big .snd{width:40px;height:40px;right:16px;bottom:16px}.reel.big .snd:before{left:12px;top:15px}.reel.big .snd:after{left:14px;top:12px}
 .reels{column-count:4;column-gap:16px;margin-top:20px}
 .reel{position:relative;margin:0 0 16px;break-inside:avoid;background:var(--bg-2);overflow:hidden;outline:1px solid var(--line);outline-offset:-1px}
@@ -892,9 +892,7 @@ html,body{overflow-x:clip}
     <div class="cpg">
       <figure class="w"><img src="img/cp-web.jpg" alt="OneBullEx web: The AI Futures Exchange hero with campaign cards" loading="lazy"></figure>
       <figure><img src="img/cp-rewards.jpg" alt="Rewards Hub page with Spartans 3.0 campaign, Lucky Spin and Futures Reward Pool" loading="lazy"></figure>
-      <figure><img src="img/cp-icons.jpg" alt="3D campaign icons in black, chrome and orange" loading="lazy"></figure>
-      <figure><img src="img/cp-ban-dark.jpg" alt="Spartans 3.0 is now live banner, dark" loading="lazy"></figure>
-      <figure><img src="img/cp-ban-light.jpg" alt="Spartans 3.0 is now live banner, light" loading="lazy"></figure>
+      <figure class="fill"><img src="img/cp-icons.jpg" alt="3D campaign icons in black, chrome and orange" loading="lazy"></figure>
     </div>
 
     <a class="next" href="#a-ads-group"><span>Next case</span><b>A-ADS Group →</b></a>
