@@ -3,7 +3,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Redaction+50:ital,wght@0,400;0,700;1,400&family=Inter+Tight:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Redaction+50:ital,wght@0,400;0,700;1,400&family=Inter+Tight:wght@300;400;500;600&family=Doto:ROND,wght@0,900&display=swap">
 <style>
 /* Layout: one dark sheet, oversized starburst bleeding off the top-right, editorial grid of cases; same identity as the CV */
 :root{
@@ -239,10 +239,12 @@ a.ft-cta{display:block;color:inherit;text-decoration:none}
 .ft-cta .l2 i{font-style:normal;display:inline-block;padding:0 .06em .02em;transition:background-color .2s,color .2s}
 a.ft-cta:hover .l2 i,a.ft-cta:focus-visible .l2 i{background:var(--or);color:#fff}
 .photo.drag{z-index:5}
-.ring{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none}
+.ring{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;perspective:1000px}
 .ring.rb{z-index:1}.ring.rf{z-index:7}
-.ring b{position:absolute;left:0;top:0;font-family:var(--sans);font-weight:700;color:var(--or);text-transform:uppercase;line-height:1;white-space:pre;will-change:transform;
-  text-shadow:.05em .05em 0 #001ad1,.1em .1em 0 #0015b0,.15em .15em 0 #00118f}
+.ring .cyl{position:absolute;left:0;top:0;transform-style:preserve-3d;transform:rotateX(-14deg) rotateZ(-4deg)}
+.ring .row{position:absolute;left:0;top:0;transform-style:preserve-3d;will-change:transform}
+.ring b{position:absolute;left:0;top:0;font-family:"Doto",monospace;font-weight:900;font-variation-settings:"ROND" 0;color:var(--or);line-height:1;white-space:pre;text-transform:uppercase}
+.ring.rf b{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .drag{touch-action:none;user-select:none;-webkit-user-drag:none}.drag.dragging{z-index:50}
 .ft-gif{position:absolute;left:58%;top:-.5vw;width:19vw;aspect-ratio:797/652;object-fit:cover;z-index:2}
 .ft-nav{display:flex;justify-content:center;gap:12px clamp(32px,10vw,180px)!important;gap:12px 24px;flex-wrap:wrap;border-block:1px solid #e4e2de;padding:clamp(18px,2.4vw,40px) clamp(16px,2.2vw,44px);font-size:clamp(15px,2vw,34px);letter-spacing:.04em;text-transform:uppercase}
@@ -1191,37 +1193,34 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
 })();
 </script>
 <script>
-/* isometric running text ring around the hero photo: extruded letters travel along a tilted ellipse; the back half passes under the photo */
+/* pixel text cylinder around the hero photo (two rows spinning in 3D); the back copy sits under the photo, the front copy with hidden backfaces sits above it */
 (function(){
-  var ph=document.querySelector('.hero .photo'),rb=document.querySelector('.ring.rb'),rf=document.querySelector('.ring.rf');if(!ph||!rb||!rf)return;
-  var hero=ph.parentNode,PH='CRYPTO \u00b7 FINTECH \u00b7 GAMIFICATION \u00b7 ',key='',L=[],P=[],total=0,off=0,still=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var TILT=-10*Math.PI/180;
-  function build(rx,ry,fs){
-    /* sample the ellipse into an arc-length table */
-    P=[];total=0;var M=720,px=rx,py=0;
-    for(var s=0;s<=M;s++){var a=s/M*2*Math.PI,x=rx*Math.cos(a),y=ry*Math.sin(a);if(s)total+=Math.hypot(x-px,y-py);P.push([total,a]);px=x;py=y}
-    var W={},probe=document.createElement('b');probe.style.fontSize=fs+'px';probe.style.textShadow='none';rb.appendChild(probe);
-    function cw(c){if(!(c in W)){probe.textContent=c===' '?'\u00a0':c;W[c]=probe.getBoundingClientRect().width+fs*.12}return W[c]}
-    var seg=0;for(var j=0;j<PH.length;j++)seg+=cw(PH[j]);probe.remove();
-    var reps=Math.max(1,Math.round(total/seg)),txt=new Array(reps+1).join(PH),k=total/(seg*reps),pos=0;L=[];rb.innerHTML='';rf.innerHTML='';
-    for(var i=0;i<txt.length;i++){var c=txt[i],w=cw(c)*k;if(c!==' '){var e1=document.createElement('b'),e2=document.createElement('b');e1.textContent=e2.textContent=c;e1.style.fontSize=e2.style.fontSize=fs+'px';rb.appendChild(e1);rf.appendChild(e2);L.push({s:pos+w/2,b:e1,f:e2})}pos+=w}
-  }
-  function angleAt(s){s=((s%total)+total)%total;var lo=0,hi=P.length-1;while(hi-lo>1){var m=(lo+hi)>>1;if(P[m][0]<s)lo=m;else hi=m}var t=(s-P[lo][0])/((P[hi][0]-P[lo][0])||1);return P[lo][1]+(P[hi][1]-P[lo][1])*t}
-  function loop(){
-    var hr=hero.getBoundingClientRect(),r=ph.getBoundingClientRect(),cx=r.left-hr.left+r.width/2,cy=r.top-hr.top+r.height/2;
-    var rx=Math.round(r.width*.74),ry=Math.round(r.height*.24),fs=Math.max(11,Math.min(19,Math.round(r.width/17)));
-    var kk=rx+'/'+ry+'/'+fs;if(kk!==key){key=kk;build(rx,ry,fs)}
-    var ct=Math.cos(TILT),st=Math.sin(TILT);
-    L.forEach(function(o){
-      var a=angleAt(o.s+off),x=rx*Math.cos(a),y=-ry*Math.sin(a),front=y>0;
-      var tx=-rx*Math.sin(a),ty=-ry*Math.cos(a),rot=Math.atan2(ty,tx)*180/Math.PI+(front?0:180)+TILT*180/Math.PI;
-      var X=cx+x*ct-y*st,Y=cy+x*st+y*ct,tr='translate('+X.toFixed(1)+'px,'+Y.toFixed(1)+'px) translate(-50%,-50%) rotate('+rot.toFixed(1)+'deg)';
-      o.f.style.transform=o.b.style.transform=tr;o.f.style.visibility=front?'visible':'hidden';o.b.style.opacity=front?1:.55;
+  var ph=document.querySelector('.hero .photo'),rings=[].slice.call(document.querySelectorAll('.ring'));if(!ph||rings.length<2)return;
+  var hero=ph.parentNode,ROWS=['CRYPTO // FINTECH // GAMIFICATION // ','BRAND // CAMPAIGNS // VIDEO // '],key='',rows=[],t0=performance.now(),still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function build(R,fs){
+    var W={},probe=document.createElement('b');probe.style.fontSize=fs+'px';rings[0].appendChild(probe);
+    function cw(c){if(!(c in W)){probe.textContent=c===' '?'\u00a0':c;W[c]=probe.getBoundingClientRect().width+fs*.06}return W[c]}
+    var circ=2*Math.PI*R,html=[];
+    ROWS.forEach(function(PH,r){
+      var txt='',tot=0,q=0;while(true){var ch=PH[q%PH.length];if(tot+cw(ch)>circ)break;txt+=ch;tot+=cw(ch);q++}
+      var k=circ/tot,pos=0,h='';
+      for(var i=0;i<txt.length;i++){var c=txt[i],w=cw(c)*k;if(c!==' ')h+='<b style="font-size:'+fs+'px;transform:rotateY('+((pos+w/2)/circ*360).toFixed(2)+'deg) translateZ('+R+'px) translate(-50%,-50%)">'+c+'</b>';pos+=w}
+      html.push('<div class="row" data-r="'+r+'" style="top:'+((r-.5)*fs*1.05).toFixed(1)+'px">'+h+'</div>');
     });
-    if(!still)off+=0.5;
+    probe.remove();
+    rings.forEach(function(rg){rg.innerHTML='<div class="cyl">'+html.join('')+'</div>'});
+    rows=[].slice.call(document.querySelectorAll('.ring .row'));
+  }
+  function loop(now){
+    var hr=hero.getBoundingClientRect(),r=ph.getBoundingClientRect(),cx=r.left-hr.left+r.width/2,cy=r.top-hr.top+r.height*.62;
+    var R=Math.round(Math.min(r.width*.74,hr.width-cx-8)),fs=Math.max(16,Math.round(r.width/9));
+    var kk=R+'/'+fs;if(kk!==key){key=kk;build(R,fs)}
+    rings.forEach(function(rg){rg.style.transform='translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px)'});
+    var a=still?0:((now||0)-t0)/1000*14;
+    rows.forEach(function(rw){rw.style.transform='rotateY('+(rw.dataset.r==='1'?-a+25:a).toFixed(2)+'deg)'});
     requestAnimationFrame(loop);
   }
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){key=''});
+  if(document.fonts&&document.fonts.load)document.fonts.load('900 40px Doto').then(function(){key=''});
   loop();
 })();
 </script>
