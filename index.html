@@ -142,7 +142,7 @@ a:focus-visible{outline:2px solid var(--or);outline-offset:3px}
 .vids figcaption{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
 .reels-h{margin:56px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.6vw,36px);display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
 .reels-h small{font-family:var(--sans);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
-.hvids{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.hvids .reel{margin:0}@media (max-width:700px){.hvids{grid-template-columns:1fr;gap:10px}}.reel.big .snd{width:40px;height:40px;right:16px;bottom:16px}.reel.big .snd:before{left:12px;top:15px}.reel.big .snd:after{left:14px;top:12px}
+.reel.big{margin:16px 0 0}.hvids{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.hvids .reel{margin:0}@media (max-width:700px){.hvids{grid-template-columns:1fr;gap:10px}}.reel.big .snd{width:40px;height:40px;right:16px;bottom:16px}.reel.big .snd:before{left:12px;top:15px}.reel.big .snd:after{left:14px;top:12px}
 .reels{column-count:4;column-gap:16px;margin-top:20px}
 .reel{position:relative;margin:0 0 16px;break-inside:avoid;background:var(--bg-2);overflow:hidden;outline:1px solid var(--line);outline-offset:-1px}
 .reel video{display:block;width:100%;height:auto;object-fit:cover;background:var(--bg-2)}
@@ -711,6 +711,7 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
           <figure><a class="yt" href="https://youtu.be/8IwWyKMYauw" target="_blank" rel="noopener" data-yt="8IwWyKMYauw" aria-label="Play: OneBullEx brand redesign"><span class="play"></span><b>OneBullEx brand redesign</b></a><figcaption><span>Video</span><a href="https://youtu.be/8IwWyKMYauw" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
           <figure><a class="yt" href="https://youtu.be/aEm2hF7XJnU" target="_blank" rel="noopener" data-yt="aEm2hF7XJnU" aria-label="Play: OneBullEx Mastercard tutorial"><span class="play"></span><b>OneBullEx Mastercard tutorial</b></a><figcaption><span>Video</span><a href="https://youtu.be/aEm2hF7XJnU" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
         </div>
+        <figure class="reel big"><video data-src="img/rv-what-is-spartans-en.mp4" poster="img/rp-what-is-spartans-en.jpg" style="aspect-ratio:16/9" muted loop playsinline preload="none" aria-label="OneBullEx video: What is Spartans"></video><span class="snd" aria-hidden="true"></span></figure>
         <div class="hvids">
           <figure class="reel"><video data-src="img/rv-tradfi-spartans-1.mp4" poster="img/rp-tradfi-spartans-1.jpg" style="aspect-ratio:16/9" muted loop playsinline preload="none" aria-label="OneBullEx video: TradFi and Spartans"></video><span class="snd" aria-hidden="true"></span></figure>
           <figure class="reel"><video data-src="img/rv-web3-tradfi.mp4" poster="img/rp-web3-tradfi.jpg" style="aspect-ratio:16/9" muted loop playsinline preload="none" aria-label="OneBullEx video: Web3 TradFi"></video><span class="snd" aria-hidden="true"></span></figure>
@@ -719,8 +720,9 @@ html.pressing,html.pressing *{cursor:url("data:image/svg+xml,%3Csvg%20width%3D%2
           <figure class="reel"><video data-src="img/rv-zh-mid-autumn-festival.mp4" poster="img/rp-zh-mid-autumn-festival.jpg" style="aspect-ratio:16/9" muted loop playsinline preload="none" aria-label="OneBullEx video: Mid-Autumn Festival"></video><span class="snd" aria-hidden="true"></span></figure>
           <figure class="reel"><video data-src="img/rv-obex-new-listing2.mp4" poster="img/rp-obex-new-listing2.jpg" style="aspect-ratio:16/9" muted loop playsinline preload="none" aria-label="OneBullEx video: New listing"></video><span class="snd" aria-hidden="true"></span></figure>
         </div>
-        <h3 class="reels-h">Social &amp; ads<small>20 videos · tap for sound</small></h3>
+        <h3 class="reels-h">Social &amp; ads<small>21 videos · tap for sound</small></h3>
         <div class="reels">
+          <figure class="reel"><video data-src="img/rv-spartans3-v4-final-1080.mp4" poster="img/rp-spartans3-v4-final-1080.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: Spartans"></video><span class="snd" aria-hidden="true"></span></figure>
           <figure class="reel"><video data-src="img/rv-x-tradfi-pairs4.mp4" poster="img/rp-x-tradfi-pairs4.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: TradFi pairs"></video><span class="snd" aria-hidden="true"></span></figure>
           <figure class="reel"><video data-src="img/rv-50-givaway-halloween.mp4" poster="img/rp-50-givaway-halloween.jpg" style="aspect-ratio:1/1" muted loop playsinline preload="none" aria-label="OneBullEx video: Halloween giveaway"></video><span class="snd" aria-hidden="true"></span></figure>
           <figure class="reel"><video data-src="img/rv-tiger.mp4" poster="img/rp-tiger.jpg" style="aspect-ratio:9/16" muted loop playsinline preload="none" aria-label="OneBullEx video: tiger"></video><span class="snd" aria-hidden="true"></span></figure>
